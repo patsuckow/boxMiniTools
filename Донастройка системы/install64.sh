@@ -83,7 +83,8 @@ sudo apt install ttf-mscorefonts-installer -y
 # pwgen - консольный генератор паролей. Использование (рандомный, 18 символьный пароль, без символов O/0 и 1/I): pwgen -sB 18
 # ffmpeg - A complete, cross-platform solution to record, convert and stream audio and video. https://ffmpeg.org/
 # Cheese - утилита для получения снимков и видео с вашей вебкамеры
-sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler  inkscape gparted gpaste libimage-exiftool-perl whois tree htop python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese
+# kdenlive - видео редактор для Linux, для решения полупрофессиональных задач, с открытым исходным кодом, ориентированный на работу в окружении рабочего стола KDE. Для работы с видео используются другие проекты, такие как ffmpeg и mlt 
+sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler  inkscape gparted gpaste libimage-exiftool-perl whois tree htop python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive
 
 # 5. Установим необходимый софт, используя ppa-репозитории:
 ###########################################################
