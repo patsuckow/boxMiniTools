@@ -85,7 +85,9 @@ sudo apt install ttf-mscorefonts-installer -y
 # Cheese - утилита для получения снимков и видео с вашей вебкамеры
 # kdenlive - видео редактор для Linux, для решения полупрофессиональных задач, с открытым исходным кодом, ориентированный на работу в окружении рабочего стола KDE. Для работы с видео используются другие проекты, такие как ffmpeg и mlt 
 # AcetoneISO - аналог UltraISO для Linux: работа с образами дисков (редактирование/создание/загрузочные диски), монтирование.
-sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler  inkscape gparted gpaste libimage-exiftool-perl whois tree htop python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive acetoneiso
+# uget - менеджер загрузок с паузой и докачкой, очередями загрузок и т.п. https://ugetdm.com/downloads/linux-mint/
+sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler  inkscape gparted gpaste libimage-exiftool-perl whois tree htop 
+sudo apt install python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive acetoneiso uget
 # 5. Установим необходимый софт, используя ppa-репозитории:
 ###########################################################
 # Cryptomator - кроссплатформенное средство резервного копирования с шифрованием для вашего облачного хранилища (Dropbox, Google Drive, OneDrive и любым 
