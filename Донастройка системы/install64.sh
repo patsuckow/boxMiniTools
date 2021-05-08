@@ -1,4 +1,4 @@
-# Актуально на 2021г.
+# Актуальность: май 2021г.
 # Пример для OS Linux Mint 20, Cinnamon (64-bit).
 #
 # Сделать данный файл install64.sh исполняемым и запустить сразу после установки Linux Mint, 
@@ -69,7 +69,6 @@ sudo apt install ttf-mscorefonts-installer -y
 # kruler - экранная линейка
 # inkscape - редактор векторной графики
 # gparted - редактор разделов HDD
-# gpaste - утилита для работы с историей буфера обмена
 # filezilla - FileZilla Client (да, в репозитории не самая последняя версия, но ведь перед добавлением в репозиторий она протестированна и работает стабильно)
 # libimage-exiftool-perl - утилита для удаление EXIF информации из изображений и фото
 # whois - утилита получения сведений об IP или URL адресе ресурса (Пример: $ whois patsuckow.ru | less )
@@ -84,12 +83,10 @@ sudo apt install ttf-mscorefonts-installer -y
 # ffmpeg - A complete, cross-platform solution to record, convert and stream audio and video. https://ffmpeg.org/
 # Cheese - утилита для получения снимков и видео с вашей вебкамеры
 # kdenlive - видео редактор для Linux, для решения полупрофессиональных задач, с открытым исходным кодом, ориентированный на работу в окружении рабочего стола KDE. Для работы с видео используются другие проекты, такие как ffmpeg и mlt 
-# AcetoneISO - аналог UltraISO для Linux: работа с образами дисков (редактирование/создание/загрузочные диски), монтирование.
-# uget - менеджер загрузок с паузой и докачкой, очередями загрузок и т.п. https://ugetdm.com/downloads/linux-mint/
 # vnstat - Учет трафика сетевого интерфейса https://electrichp.blogspot.com/2013/05/linux-vnstat.html
 # zeal -  an offline documentation browser for software developers zealdocs.org
-sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler  inkscape gparted gpaste libimage-exiftool-perl whois tree htop 
-sudo apt install python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive acetoneiso uget vnstat zeal
+sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler  inkscape gparted libimage-exiftool-perl whois tree htop 
+sudo apt install python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat zeal
 # 5. Установим необходимый софт, используя ppa-репозитории:
 ###########################################################
 # Cryptomator - кроссплатформенное средство резервного копирования с шифрованием для вашего облачного хранилища (Dropbox, Google Drive, OneDrive и любым 
@@ -138,20 +135,6 @@ sudo mkdir /tmp/uploads
  sudo dpkg -i /tmp/uploads/*.deb 
 # Удаляем каталог uploads из временной папки со всем содержимым:
  sudo rm -rf /tmp/uploads
-
-# Yandex.Disk - онлайн хранилище
- Вся документация: https://yandex.ru/support/disk-desktop-linux/start.html
- sudo wget -O YANDEX-DISK-KEY.GPG http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG
- sudo apt-key add YANDEX-DISK-KEY.GPG
- sudo echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" >> /etc/apt/sources.list.d/yandex-disk.list
- sudo apt-get update
- sudo apt-get install yandex-disk
- echo 'Запускаем ручную настройку клиента Yandex.Disk:';
- yandex-disk setup
-# Установим СТОРОННИЙ GUI индикатор yd-tools для Yandex.Disk (добавим ppa-репозиторий, обновим список пакетов и установим) - делать нужно только после установки и настройки самого клиента Yandex.Disk# 
- sudo apt add-repository ppa:slytomcat/ppa -y && sudo apt update && sudo apt install -y yd-tools
-# Запускаем индикатор Yandex.Disk (автозагрузка включена по умолчанию)
- yandex-disk-indicator
 
 # 8. После всех установок/обновлений/удалений:
 ###########################################
