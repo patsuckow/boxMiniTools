@@ -130,14 +130,29 @@ sudo mkdir /tmp/uploads
 # TeamViewer - Пакет программного обеспечения для удалённого контроля компьютеров совместного использования,
 #              обмена файлами между управляющей и управляемой машинами, видеосвязи и веб-конференций.
 # Skype - для видеозвонков
- sudo wget -P /tmp/uploads https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
- sudo wget -P /tmp/uploads https://go.skype.com/skypeforlinux-64.deb
+sudo wget -P /tmp/uploads https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+sudo wget -P /tmp/uploads https://go.skype.com/skypeforlinux-64.deb
 # На всякий случай проверим и устраним сломавшиеся зависимости:
- sudo apt-get install -f
+sudo apt-get install -f
 # Установим все скачанные .deb-пакеты:
- sudo dpkg -i /tmp/uploads/*.deb 
+sudo dpkg -i /tmp/uploads/*.deb 
 # Удаляем каталог uploads из временной папки со всем содержимым:
- sudo rm -rf /tmp/uploads
+sudo rm -rf /tmp/uploads
+ 
+# Yandex.Disk - онлайн хранилище
+# Вся документация: https://yandex.ru/support/disk-desktop-linux/start.html
+# Если вами понадобится, раскоментируете сами:
+# sudo wget -O YANDEX-DISK-KEY.GPG http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG
+# sudo apt-key add YANDEX-DISK-KEY.GPG
+# sudo echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" >> /etc/apt/sources.list.d/yandex-disk.list
+# sudo apt-get update
+# sudo apt-get install yandex-disk
+# echo 'Запускаем ручную настройку клиента Yandex.Disk:';
+# yandex-disk setup
+# Установим СТОРОННИЙ GUI индикатор yd-tools для Yandex.Disk (добавим ppa-репозиторий, обновим список пакетов и установим) - делать нужно только после установки и настройки самого клиента Yandex.Disk# 
+# sudo apt add-repository ppa:slytomcat/ppa -y && sudo apt update && sudo apt install -y yd-tools
+# Запускаем индикатор Yandex.Disk (автозагрузка включена по умолчанию)
+# yandex-disk-indicator
 
 # 8. После всех установок/обновлений/удалений:
 ###########################################
