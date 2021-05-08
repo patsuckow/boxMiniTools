@@ -87,8 +87,9 @@ sudo apt install -y ttf-mscorefonts-installer -y
 # vnstat - Учет трафика сетевого интерфейса https://electrichp.blogspot.com/2013/05/linux-vnstat.html
 # zeal -  an offline documentation browser for software developers zealdocs.org
 # obs-studio - захват видео скринкастов с экрана Linux, позволяет записывать видео с нескольких источников, в том числе с наложением картинки / возможна трансляция на все популярные платформы: YouTube, Twitch и другие
+# whatsapp-desktop - Unofficial whatsapp web desktop client for OSX, Linux and Windows. Build with Electron.
 sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler  inkscape gparted libimage-exiftool-perl whois tree htop 
-sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat zeal obs-studio
+sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat zeal obs-studio whatsapp-desktop
 # 5. Установим необходимый софт, используя ppa-репозитории:
 ###########################################################
 # Cryptomator - кроссплатформенное средство резервного копирования с шифрованием для вашего облачного хранилища (Dropbox, Google Drive, OneDrive и любым 
