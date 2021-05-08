@@ -60,7 +60,7 @@ echo 'export MANOPT="-L ru"' >> ~/.bashrc
 # при возникновении необходимости, устанавливать и запускать 32 битные и gt приложения на 64 битной системе:
 sudo apt install -y ia32-libs libc6:i386
 # Установим Microsoft True Type(ttf) шрифты: Andale Mono, Arial, Arial Black, Comic Sans MS, Courier New, Georgia, Impact, Times New Roman, Trebuchet, Verdana, Webdings
-sudo apt install ttf-mscorefonts-installer -y
+sudo apt install -y ttf-mscorefonts-installer -y
 #
 # vim - редактор
 # mc - Midnight Commander - консольный файловый менеджер
