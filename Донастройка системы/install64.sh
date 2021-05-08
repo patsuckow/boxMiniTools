@@ -28,7 +28,8 @@
 # Thunderbird - почтовый клиент
 # Warpinator - отправка и получение файлов по локальной сети
 # rhythmbox - аудиоплеер
-sudo apt purge -y redshift pix hexchat gnote thunderbird warpinator rhythmbox
+# webapp-manager - создавать десктопные приложения из страниц сайтов - хр*нь, короче!
+sudo apt purge -y redshift pix hexchat gnote thunderbird warpinator rhythmbox webapp-manager
 
 # 2. Обновим систему:
 # Обновим системные списки ссылок на пакеты, содержащихся в репозиториях:
