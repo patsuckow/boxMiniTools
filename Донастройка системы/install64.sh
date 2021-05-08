@@ -62,7 +62,7 @@ echo 'export MANOPT="-L ru"' >> ~/.bashrc
 sudo apt install -y ia32-libs libc6:i386
 # Установим Microsoft True Type(ttf) шрифты: Andale Mono, Arial, Arial Black, Comic Sans MS, Courier New, Georgia, Impact, Times New Roman, Trebuchet, 
 # Verdana, Webdings
-sudo apt install -y ttf-mscorefonts-installer -y
+sudo apt install -y ttf-mscorefonts-installer
 #
 # vim - редактор
 # mc - Midnight Commander - консольный файловый менеджер
@@ -94,6 +94,7 @@ sudo apt install -y ttf-mscorefonts-installer -y
 # whatsapp-desktop - Unofficial whatsapp web desktop client for OSX, Linux and Windows. Build with Electron.
 sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler  inkscape gparted libimage-exiftool-perl whois tree htop 
 sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat zeal obs-studio whatsapp-desktop
+
 # 5. Установим необходимый софт, используя ppa-репозитории:
 ###########################################################
 # Cryptomator - кроссплатформенное средство резервного копирования с шифрованием для вашего облачного хранилища (Dropbox, Google Drive, OneDrive и любым 
@@ -113,6 +114,11 @@ sudo add-apt-repository -y ppa:linuxgndu/sqlitebrowser && sudo apt update && sud
 # https://help.ubuntu.com/community/Boot-Repair
 # https://github.com/yannmrn/boot-repair
 sudo add-apt-repository ppa:yannubuntu/boot-repair && sudo apt update && sudo apt install -y && boot-repair
+# Typora - A minimal Markdown reading & writing app / https://typora.io
+wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+sudo add-apt-repository -y 'deb https://typora.io/linux ./'
+sudo apt update
+sudo apt install -y typora
 
 # 6. Установка утилит, для обновления которых требуется наличие в системе крипто-ключей для их репозиториев:
 #############################################################################################################
