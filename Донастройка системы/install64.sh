@@ -60,7 +60,8 @@ echo 'export MANOPT="-L ru"' >> ~/.bashrc
 # Установим 32 битные библиотеки для разрешения неразрешённых зависимостей в 64 битной системе, это позволит,
 # при возникновении необходимости, устанавливать и запускать 32 битные и gt приложения на 64 битной системе:
 sudo apt install -y ia32-libs libc6:i386
-# Установим Microsoft True Type(ttf) шрифты: Andale Mono, Arial, Arial Black, Comic Sans MS, Courier New, Georgia, Impact, Times New Roman, Trebuchet, Verdana, Webdings
+# Установим Microsoft True Type(ttf) шрифты: Andale Mono, Arial, Arial Black, Comic Sans MS, Courier New, Georgia, Impact, Times New Roman, Trebuchet, 
+# Verdana, Webdings
 sudo apt install -y ttf-mscorefonts-installer -y
 #
 # vim - редактор
@@ -74,8 +75,9 @@ sudo apt install -y ttf-mscorefonts-installer -y
 # libimage-exiftool-perl - утилита для удаление EXIF информации из изображений и фото
 # whois - утилита получения сведений об IP или URL адресе ресурса (Пример: $ whois patsuckow.ru | less )
 # tree - выводит дерево файлов и папок, а потом подсчитывает их количество по отдельности. Кроме того, утилита имеет множество опций и настроек.
-# htop — консольный монитор системных ресурсов в реальном времени: посмотреть сколько оперативной памяти занято, процент использования процессора, какие процессы используют больше всего ресурсов системы,
-#        можно менять приоритеты процессов завершать их, выполнять поиск, фильтровать процессы по определенным параметрам, сортировать, а также смотреть потоки каждого процесса.
+# htop — консольный монитор системных ресурсов в реальном времени: посмотреть сколько оперативной памяти занято, процент использования процессора, какие процессы 
+#        используют больше всего ресурсов системы, можно менять приоритеты процессов завершать их, выполнять поиск, фильтровать процессы по определенным 
+#        параметрам, сортировать, а также смотреть потоки каждого процесса.
 # pip - пакетный менеджер для python3
 # python3-venv - уилита для работы с виртуальным окружением в python3
 # clamav - антивирусный сканер и его демона + clamtk - графическая оболочка к нему.
@@ -83,10 +85,12 @@ sudo apt install -y ttf-mscorefonts-installer -y
 # pwgen - консольный генератор паролей. Использование (рандомный, 18 символьный пароль, без символов O/0 и 1/I): pwgen -sB 18
 # ffmpeg - A complete, cross-platform solution to record, convert and stream audio and video. https://ffmpeg.org/
 # Cheese - утилита для получения снимков и видео с вашей вебкамеры
-# kdenlive - видео редактор для Linux, для решения полупрофессиональных задач, с открытым исходным кодом, ориентированный на работу в окружении рабочего стола KDE. Для работы с видео используются другие проекты, такие как ffmpeg и mlt 
+# kdenlive - видео редактор для Linux, для решения полупрофессиональных задач, с открытым исходным кодом, ориентированный на работу в окружении рабочего 
+#            стола KDE. Для работы с видео используются другие проекты, такие как ffmpeg и mlt 
 # vnstat - Учет трафика сетевого интерфейса https://electrichp.blogspot.com/2013/05/linux-vnstat.html
 # zeal -  an offline documentation browser for software developers zealdocs.org
-# obs-studio - захват видео скринкастов с экрана Linux, позволяет записывать видео с нескольких источников, в том числе с наложением картинки / возможна трансляция на все популярные платформы: YouTube, Twitch и другие
+# obs-studio - захват видео скринкастов с экрана Linux, позволяет записывать видео с нескольких источников, в том числе с наложением картинки / возможна 
+#              трансляция на все популярные платформы: YouTube, Twitch и другие
 # whatsapp-desktop - Unofficial whatsapp web desktop client for OSX, Linux and Windows. Build with Electron.
 sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler  inkscape gparted libimage-exiftool-perl whois tree htop 
 sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat zeal obs-studio whatsapp-desktop
@@ -95,7 +99,8 @@ sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwg
 # Cryptomator - кроссплатформенное средство резервного копирования с шифрованием для вашего облачного хранилища (Dropbox, Google Drive, OneDrive и любым 
 # другим облачным сервисом хранения данных, синхронизирующимся с локальной папкой). Сайт - https://cryptomator.org
 sudo add-apt-repository ppa:sebastian-stenzel/cryptomator -y && sudo apt update && sudo apt install cryptomator -y
-# KeePassXC - кросплатформенный менеджер паролей (https://keepassxc.org/) ("живой" форк разработки от "мёртвой и не обновляющейся" KeePassX https://www.keepassx.org/)
+# KeePassXC - кросплатформенный менеджер паролей (https://keepassxc.org/) ("живой" форк разработки от "мёртвой и не обновляющейся" KeePassX 
+#             https://www.keepassx.org/)
 sudo add-apt-repository -y ppa:phoerious/keepassxc && sudo apt update && sudo apt  install -y keepassxc
 # Консольный git:
 sudo apt add-repository ppa:git-core/ppa -y && sudo apt update && sudo apt install -y git
@@ -149,7 +154,8 @@ sudo rm -rf /tmp/uploads
 # sudo apt-get install yandex-disk
 # echo 'Запускаем ручную настройку клиента Yandex.Disk:';
 # yandex-disk setup
-# Установим СТОРОННИЙ GUI индикатор yd-tools для Yandex.Disk (добавим ppa-репозиторий, обновим список пакетов и установим) - делать нужно только после установки и настройки самого клиента Yandex.Disk# 
+# Установим СТОРОННИЙ GUI индикатор yd-tools для Yandex.Disk (добавим ppa-репозиторий, обновим список пакетов и установим) - делать нужно только после установки 
+# и настройки самого клиента Yandex.Disk
 # sudo apt add-repository ppa:slytomcat/ppa -y && sudo apt update && sudo apt install -y yd-tools
 # Запускаем индикатор Yandex.Disk (автозагрузка включена по умолчанию)
 # yandex-disk-indicator
