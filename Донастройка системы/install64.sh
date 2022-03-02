@@ -1,5 +1,5 @@
-# Актуальность: май 2021г.
-# Пример для OS Linux Mint 20, Cinnamon (64-bit).
+# Актуальность: март 2022г.
+# Пример для OS Linux Mint 20.3 Xfce Edition (64-bit).
 #
 # Сделать данный файл install64.sh исполняемым и запустить сразу после установки Linux Mint, 
 # для установки нужных репозиториев, пакетов и удаления ненужных.
@@ -29,7 +29,7 @@
 # Warpinator - отправка и получение файлов по локальной сети
 # rhythmbox - аудиоплеер
 # webapp-manager - создавать десктопные приложения из страниц сайтов - хр*нь, короче!
-sudo apt purge -y redshift pix hexchat gnote thunderbird warpinator rhythmbox webapp-manager
+sudo apt purge -y redshift pix thunderbird warpinator rhythmbox webapp-manager
 
 # 2. Обновим систему:
 # Обновим системные списки ссылок на пакеты, содержащихся в репозиториях:
@@ -93,7 +93,7 @@ sudo apt install -y ttf-mscorefonts-installer
 # obs-studio - захват видео скринкастов с экрана Linux, позволяет записывать видео с нескольких источников, в том числе с наложением картинки / возможна 
 #              трансляция на все популярные платформы: YouTube, Twitch и другие
 # whatsapp-desktop - Unofficial whatsapp web desktop client for OSX, Linux and Windows. Build with Electron.
-sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler  inkscape gparted libimage-exiftool-perl whois tree htop brasero
+sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero
 sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat zeal obs-studio whatsapp-desktop
 
 # 5. Установим необходимый софт, используя ppa-репозитории:
@@ -103,23 +103,22 @@ sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwg
 sudo add-apt-repository ppa:sebastian-stenzel/cryptomator -y && sudo apt update && sudo apt install cryptomator -y
 # KeePassXC - кросплатформенный менеджер паролей (https://keepassxc.org/) ("живой" форк разработки от "мёртвой и не обновляющейся" KeePassX 
 #             https://www.keepassx.org/)
-sudo add-apt-repository -y ppa:phoerious/keepassxc && sudo apt update && sudo apt  install -y keepassxc
+sudo add-apt-repository -y ppa:phoerious/keepassxc && sudo apt update && sudo apt install -y keepassxc
 # Консольный git:
 sudo apt add-repository ppa:git-core/ppa -y && sudo apt update && sudo apt install -y git
 # Grub Customizer - утилита для настройки загрузчика системы
-sudo add-apt-repository ppa:danielrichter2007/grub-customizer -y && sudo apt update && sudo apt install -y grub-customizer
+# sudo add-apt-repository ppa:danielrichter2007/grub-customizer -y && sudo apt update && sudo apt install -y grub-customizer
 # Sqlitebrowser (для работы с SQLite3) - GUI версия
 sudo add-apt-repository -y ppa:linuxgndu/sqlitebrowser && sudo apt update && sudo apt install -y sqlitebrowser
 # Boot-Repair - утилита для восстановления доступа к вашей операционной системе
 # https://sourceforge.net/p/boot-repair/home/ru/
 # https://help.ubuntu.com/community/Boot-Repair
 # https://github.com/yannmrn/boot-repair
-sudo add-apt-repository ppa:yannubuntu/boot-repair && sudo apt update && sudo apt install -y && boot-repair
+sudo add-apt-repository -y ppa:yannubuntu/boot-repair && sudo apt update && sudo apt install -y && boot-repair
 # Typora - A minimal Markdown reading & writing app / https://typora.io
 wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
 sudo add-apt-repository -y 'deb https://typora.io/linux ./'
-sudo apt update
-sudo apt install -y typora
+sudo apt update & sudo apt install -y typora
 
 # 6. Установка утилит, для обновления которых требуется наличие в системе крипто-ключей для их репозиториев:
 #############################################################################################################
@@ -143,11 +142,13 @@ sudo mkdir /tmp/uploads
 #              обмена файлами между управляющей и управляемой машинами, видеосвязи и веб-конференций.
 # Skype - для видеозвонков
 sudo wget -P /tmp/uploads https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
-sudo wget -P /tmp/uploads https://go.skype.com/skypeforlinux-64.deb
+# sudo wget -P /tmp/uploads https://go.skype.com/skypeforlinux-64.deb
 # На всякий случай проверим и устраним сломавшиеся зависимости:
 sudo apt-get install -f
 # Установим все скачанные .deb-пакеты:
-sudo dpkg -i /tmp/uploads/*.deb 
+sudo dpkg -i /tmp/uploads/*.deb
+# Удовлетворяем требуемые зависимости
+sudo apt --fix-broken -y install
 # Удаляем каталог uploads из временной папки со всем содержимым:
 sudo rm -rf /tmp/uploads
  
