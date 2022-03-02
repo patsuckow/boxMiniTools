@@ -119,6 +119,9 @@ sudo add-apt-repository -y ppa:yannubuntu/boot-repair && sudo apt update && sudo
 wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
 sudo add-apt-repository -y 'deb https://typora.io/linux ./'
 sudo apt update & sudo apt install -y typora
+# Etcher (balena-etcher-electron) - утилита записи загрузочных ISO-образов на флешку
+curl -1sLf 'https://dl.cloudsmith.io/public/balena/etcher/setup.deb.sh' | sudo -E bash
+sudo apt update & sudo apt install -y balena-etcher-electron
 
 # 6. Установка утилит, для обновления которых требуется наличие в системе крипто-ключей для их репозиториев:
 #############################################################################################################
