@@ -79,6 +79,7 @@ sudo apt install -y ttf-mscorefonts-installer
 #        используют больше всего ресурсов системы, можно менять приоритеты процессов завершать их, выполнять поиск, фильтровать процессы по определенным 
 #        параметрам, сортировать, а также смотреть потоки каждого процесса.
 # brasero - запись CD/DVD-R/RW (обычных, загрузочных с iso), музыкальных дисков, клонирование дисков www.gnome.org/projects/brasero
+# freecad - бесплатная система 2D и 3D моделирования (куча роликов, документации и поддержкой python - https://www.freecad.org/?lang=ru )
 # pip - пакетный менеджер для python3
 # python3-venv - уилита для работы с виртуальным окружением в python3
 # clamav - антивирусный сканер и его демона + clamtk - графическая оболочка к нему.
@@ -93,7 +94,7 @@ sudo apt install -y ttf-mscorefonts-installer
 # obs-studio - захват видео скринкастов с экрана Linux, позволяет записывать видео с нескольких источников, в том числе с наложением картинки / возможна 
 #              трансляция на все популярные платформы: YouTube, Twitch и другие
 # whatsapp-desktop - Unofficial whatsapp web desktop client for OSX, Linux and Windows. Build with Electron.
-sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero
+sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero freecad
 sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat zeal obs-studio whatsapp-desktop
 
 # 5. Установим необходимый софт, используя ppa-репозитории:
