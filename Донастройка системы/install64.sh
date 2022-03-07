@@ -15,7 +15,7 @@
 #
 #!/bin/bash
 
-# 1. Удаляем предустановленные и ненужные утилиты с их настройками из системы:
+# 1. Удаляем предустановленные и ненужные (для меня) утилиты с их настройками из системы:
 # Поскольку нет необходимости больше пользоваться нижеследующими утилитами в будущем, то незачем оставлять
 # в системе файлы их настроек, поэтому для удаления используем sudo apt purge вместо sudo apt remove
 #
@@ -29,7 +29,10 @@
 # Warpinator - отправка и получение файлов по локальной сети
 # rhythmbox - аудиоплеер
 # webapp-manager - создавать десктопные приложения из страниц сайтов - хр*нь, короче!
-sudo apt purge -y redshift pix thunderbird warpinator rhythmbox webapp-manager
+# HexChat - IRC client based on XChat
+# onboard - экранная клавиатура
+# Timeshift - программа востановления системы из бэкапа (снимка)
+sudo apt purge -y redshift pix thunderbird warpinator rhythmbox webapp-manager hexchat onboard timeshift
 
 # 2. Обновим систему:
 # Обновим системные списки ссылок на пакеты, содержащихся в репозиториях:
