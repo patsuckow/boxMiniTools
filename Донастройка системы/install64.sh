@@ -161,19 +161,17 @@ sudo rm -rf /tmp/uploads
  
 # Yandex.Disk - онлайн хранилище
 # Вся документация: https://yandex.ru/support/disk-desktop-linux/start.html
-# Если вами понадобится, раскоментируете сами:
-# sudo wget -O YANDEX-DISK-KEY.GPG http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG
-# sudo apt-key add YANDEX-DISK-KEY.GPG
-# sudo echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" >> /etc/apt/sources.list.d/yandex-disk.list
-# sudo apt-get update
-# sudo apt-get install yandex-disk
+sudo echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex-disk.list > /dev/null
+sudo wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | sudo apt-key add - 
+sudo apt-get update
+sudo apt-get install -y yandex-disk
 # echo 'Запускаем ручную настройку клиента Yandex.Disk:';
-# yandex-disk setup
+yandex-disk setup
 # Установим СТОРОННИЙ GUI индикатор yd-tools для Yandex.Disk (добавим ppa-репозиторий, обновим список пакетов и установим) - делать нужно только после установки 
 # и настройки самого клиента Yandex.Disk
-# sudo apt add-repository ppa:slytomcat/ppa -y && sudo apt update && sudo apt install -y yd-tools
+sudo apt add-repository ppa:slytomcat/ppa -y && sudo apt update && sudo apt install -y yd-tools
 # Запускаем индикатор Yandex.Disk (автозагрузка включена по умолчанию)
-# yandex-disk-indicator
+yandex-disk-indicator
 
 # 8. После всех установок/обновлений/удалений:
 ###########################################
