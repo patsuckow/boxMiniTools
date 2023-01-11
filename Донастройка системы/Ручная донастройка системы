@@ -44,8 +44,8 @@ UUID=40D0-EC15  /boot/efi       vfat    umask=0077      0       1
 # swap was on /dev/sdc2 during installation
 UUID=ce2682d6-f137-49ca-bb74-bd93c4b39ab6 none            swap    sw              0       0
 # NTFC-диски
-UUID=383D389461789146 /media/z/Hack/               ntfs    errors=remount-ro 0       1
-UUID=0D4510E7009229A6 /media/z/Learning-1/               ntfs    errors=remount-ro 0       1
+UUID=383D389461789146 /media/home/nameDISK-1/               ntfs    errors=remount-ro 0       1
+UUID=0D4510E7009229A6 /media/home/nameDISK-2/               ntfs    errors=remount-ro 0       1
 ```
 Шаг 3. Перезагружаем систему. Автомонтирование NTFS-дисков работает.
 
