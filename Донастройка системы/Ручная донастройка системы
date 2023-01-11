@@ -5,4 +5,54 @@
 2. В разделе "Параметры" отметить галочку - "Запускать автоматически при старте системы"
 3. В разделе "Уведомления", во вкладке "Всплывающие сообщения" - убрать галочку с "Запус XNeur"
 
-#2.
+#2. Автоматическое монтирование NTFS-дисков при загрузке системы
+
+Шаг 1. Узнаем идентификаторы подключенных разделов:
+$ sudo blkid
+
+Получаем, что-то вроде:
+```
+/dev/sda2: LABEL="Hack" UUID="383D389461789146" TYPE="ntfs" PARTUUID="deb4da78-02"
+/dev/sdc1: UUID="40D0-EC15" TYPE="vfat" PARTUUID="e000016a-51fa-4192-a40a-63c8559daa12"
+/dev/sdc2: UUID="ce2682d6-f137-49ca-bb74-bd93c4b39ab6" TYPE="swap" PARTUUID="4772572b-5218-4ccd-bbad-1dc8fc8cc2d5"
+/dev/sdc3: UUID="1ae11646-1dbe-4399-b5f8-07ef69f7e770" TYPE="ext4" PARTUUID="7e909380-82f4-4045-a7a7-93a4be3edc8f"
+/dev/sdb5: LABEL="Learning-1" UUID="0D4510E7009229A6" TYPE="ntfs" PTTYPE="atari" PARTUUID="deb4da49-05"
+```
+Шаг 2. Оповещаем систему о новых дисках, дописывая их в конец файла /etc/fstab:
+$ sudo vim /etc/fstab
+
+Получаем, что-то вроде:
+```
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/sdc3 during installation
+UUID=1ae11646-1dbe-4399-b5f8-07ef69f7e770 /               ext4    errors=remount-ro 0       1
+# /boot/efi was on /dev/sdc1 during installation
+UUID=40D0-EC15  /boot/efi       vfat    umask=0077      0       1
+# swap was on /dev/sdc2 during installation
+UUID=ce2682d6-f137-49ca-bb74-bd93c4b39ab6 none            swap    sw              0       0
+```
+
+Добавляем /dev/sda2 и /dev/sdb5 для автоматического подключения, прописав их UUID.
+
+В итоге получаем, конечный результат:
+```
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/sdc3 during installation
+UUID=1ae11646-1dbe-4399-b5f8-07ef69f7e770 /               ext4    errors=remount-ro 0       1
+# /boot/efi was on /dev/sdc1 during installation
+UUID=40D0-EC15  /boot/efi       vfat    umask=0077      0       1
+# swap was on /dev/sdc2 during installation
+UUID=ce2682d6-f137-49ca-bb74-bd93c4b39ab6 none            swap    sw              0       0
+# NTFC-диски
+UUID=383D389461789146 /media/z/Hack/               ntfs    errors=remount-ro 0       1
+UUID=0D4510E7009229A6 /media/z/Learning-1/               ntfs    errors=remount-ro 0       1
+```
+Шаг 3. Перезагружаем систему. Автомонтирование NTFS-дисков работает.
+
+# 3.
+
+
+
+
+
+
