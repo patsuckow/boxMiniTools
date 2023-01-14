@@ -99,7 +99,8 @@ sudo apt install -y ttf-mscorefonts-installer
 # whatsapp-desktop - Unofficial whatsapp web desktop client for OSX, Linux and Windows. Build with Electron.
 # speedtest-cli - измерение скорости интернета (загрузка/выгрузка/задержка и потеря пакетов, настройка сбора статистики и использование в своих утилитах) - https://www.speedtest.net/apps/cli
 sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero freecad
-sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat zeal obs-studio whatsapp-desktop speedtest-cli
+sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat zeal obs-studio whatsapp-desktop
+sudo apt install -y speedtest-cli
 
 # 5. Установим необходимый софт, используя ppa-репозитории:
 ###########################################################
@@ -184,7 +185,7 @@ yandex-disk-indicator
 # Удалим оставшиеся конфиги от удалённых пакетов
 # Удалим архивные файлы .deb пакетов из локального репозитория
 # Удалим архивные файлы .deb пакетов из каталога /var/cache/apt/archives
-sudo apt update && sudo apt full-upgrade -y && sudo apt dist-upgrade -y && sudo apt-get install -f -y && sudo aptitude -y purge ~c && sudo apt clean -y && sudo apt autoclean -y
+sudo apt update && sudo apt full-upgrade -y && sudo apt dist-upgrade -y && sudo apt-get install -f -y && sudo aptitude -y purge ~c sudo apt clean -y && sudo apt autoclean -y
 
 # Перезагрузим систему, через 1 минуту:
 shutdown -r +1
