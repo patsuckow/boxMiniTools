@@ -24,4 +24,6 @@ install64.sh - скрипт "донастройки" системы / устан
 
 `search_bad_img.py` - поиск битых изображений в заданном каталоге на python
 
-`count_words.py` - Подсчёт частотности слов в тексте .Код к моей статье: "Знаете ли вы какое слово является самым упоминаемым в Библии? Надо бы проверить :)" https://vk.com/@patsuckow-count-words-in-the-bible
+`count_words.py` - Подсчёт частотности слов в тексте. Код к моей статье: "Знаете ли вы какое слово является самым упоминаемым в Библии? Надо бы проверить :)" https://vk.com/@patsuckow-count-words-in-the-bible
+
+`ispolzuya-teoriu-veroyatnostei.py` - Код к моей статье: Используя "Теорию вероятностей", подсчитаем какова вероятность выиграть в любую лотерею. https://vk.com/@patsuckow-ispolzuya-teoriu-veroyatnostei
