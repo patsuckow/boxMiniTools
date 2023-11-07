@@ -10,17 +10,16 @@
 PASSWORD=$(cat /dev/urandom | tr -dc "a-zA-Z0-9@#$%^~=[]?!" | dd  bs=18 count=1 2>/dev/null)
 echo $PASSWORD
 
-# 2.Вариант (генерируем пароль строго длинной 18 символов)
+# 2.Вариант (генерируем пароль в соответствии переданному параметру, либо строго длинной 18 символов)
 # https://www.shellhacks.com/ru/generate-random-passwords-linux-command-line/
 # Проверяем количество переданных аргументов и задаём значение LEN равное первому переданному аргументу. 
 # Если ни один аргумент не передается, то значение LEN будет равно 18.
 if [ "$#" -gt 0 ]
 then
  LEN=$1
-else # если аргумент не передан, то длина пароля будет больше 18 символов
+else
  LEN=18
 fi
-
 PASSWORD=$(tr -dc "a-zA-Z0-9@#$%^~=[]?!" < /dev/urandom | head -c "$LEN" | xargs)
 echo $PASSWORD
 
