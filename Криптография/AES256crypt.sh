@@ -7,6 +7,8 @@
 # '/home/alex/Рабочий стол/1.txt'
 # или
 # '/home/alex/My Folder'
+# "Корректный путь, без пробелов"
+# '/home/alex/My_Folder'
 #
 # Автор: https://github.com/patsuckow/
 # 2017г.
@@ -74,4 +76,3 @@ then
    fi
  fi
 fi
-
