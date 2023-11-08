@@ -69,7 +69,7 @@ tar_xf(){
 deleting_source(){
   local name=$1
   rm -rf "$name"
-  echo "Исходный файл/каталог $name удалён."
+  echo "$name удалён."
 }
 
 # Проверяем сколько аргументов передано скрипту
