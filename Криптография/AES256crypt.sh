@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Скрипт (на bash) шифрования/расшифровки файла или каталога с файлами
-# Его аналог на python - AES256crypt.py
+# Скрипт шифрования/расшифровки файла или каталога с файлами
 #
 # Автор: https://github.com/patsuckow/
 # 2017-2023г.
@@ -60,7 +59,7 @@ tar_rf(){
 tar_xf(){
   local dir_name=$1
   echo 'Распаковка архива...';
-  tar -xf "$new_file";
+  tar -xf "$dir_name";
   if [[ ! $?  ]]; then echo 'При распаковке архива что-то пошло не так.'; exit 1; fi
   echo 'Успешно.'
 }
@@ -69,7 +68,7 @@ tar_xf(){
 deleting_source(){
   local name=$1
   rm -rf "$name"
-  echo "$name удалён."
+  echo "$name удалён"
 }
 
 # Проверяем сколько аргументов передано скрипту
