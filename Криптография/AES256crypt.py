@@ -26,10 +26,22 @@
 #
 # Расшифровать файл
 # $ python3 AES256crypt.py dec ~/My_File.dec
-
 import os
 import sys
 import subprocess
+
+
+def check_success(return_code, success_message, error_message):
+    """
+    Проверяет успешность выполнения операции на основе кода возврата.
+    Если операция прошла успешно, выводит success_message.
+    В противном случае, выводит error_message и завершает выполнение программы.
+    """
+    if os.WIFEXITED(return_code) and os.WEXITSTATUS(return_code) == 0:
+        print(success_message)
+    else:
+        print(error_message)
+        sys.exit(1)
 
 
 def file_encrypt(base_name):
@@ -45,16 +57,18 @@ def file_encrypt(base_name):
     if not os.path.exists(base_name):
         print(f"Файл не существует: {base_name}")
         sys.exit(1)
-    
+
     # Зашифруем файл, используя openssl и алгоритм AES-256-CBC с ключом 256 бит и "солью"
     new_name = f"{base_name}.enc"
     return_code = os.system(f"openssl enc -aes-256-cbc -salt -in {base_name} -out {new_name}")
-    # Проверяем успешно ли прошло шифрование
-    if os.WIFEXITED(return_code) and os.WEXITSTATUS(return_code) == 0:
-        print(f"\nШифрование прошло успешно.\nПолучен зашифрованный файл: {new_name}")
-    else:
-        print("При шифровании произошла ошибка")
-        sys.exit(1)
+    # Проверка успешности шифрования
+    check_success(
+        return_code,
+        f"\nШифрование прошло успешно.\nПолучен зашифрованный файл: {new_name}",
+        "При шифровании произошла ошибка"
+    )
+
+    return new_name  # TODO: пока не используется
 
 
 def file_decrypt(encrypted_file, new_name):
@@ -71,16 +85,16 @@ def file_decrypt(encrypted_file, new_name):
     if not os.path.exists(encrypted_file):
         print(f"Зашифрованный файл не существует: {encrypted_file}")
         sys.exit(1)
-    
+
     # Расшифруем файл с помощью openssl
     return_code = os.system(f"openssl enc -aes-256-cbc -d -in {encrypted_file} -out {new_name}")
-    # Проверяем успешно ли прошла расшифровка
-    if os.WIFEXITED(return_code) and os.WEXITSTATUS(return_code) == 0:
-        print(f"\nРасшифровка прошла успешно.\nПолучен файл: {new_name}")
-    else:
-        print("При расшифровке произошла ошибка")
-        sys.exit(1)
-    
+    # Проверка успешности расшифровки
+    check_success(
+        return_code,
+        f"\nРасшифровка прошла успешно.\nПолучен файл: {new_name}",
+        "При расшифровке произошла ошибка"
+    )
+
     return new_name
 
 
@@ -97,13 +111,13 @@ def tar_rf(base_name):
     print("Запаковываем каталог в архив...")
     archive_name = base_name + ".tar"
     return_code = subprocess.run(["tar", "-rf", archive_name, base_name])
-    # Проверяем успешно ли прошла архивация
-    if os.WIFEXITED(return_code.returncode) and os.WEXITSTATUS(return_code.returncode) == 0:
-        print(f"Архивация прошла успешно.\nПолучен файл: {archive_name}")
-    else:
-        print("При архивации произошла ошибка")
-        sys.exit(1)
-    
+    # Проверка успешности архивации
+    check_success(
+        return_code.returncode,
+        f"Архивация прошла успешно.\nПолучен файл: {archive_name}",
+        "При архивации произошла ошибка"
+    )
+
     return archive_name
 
 
@@ -113,7 +127,7 @@ def tar_xf(archive):
 
     Args:
         archive (str): Имя архива для разархивации.
-    
+
     Returns:
         str: Имя распакованного каталога
     """
@@ -121,12 +135,14 @@ def tar_xf(archive):
     return_code = subprocess.run(["tar", "-xf", archive])
     # Получаем имя распакованного каталога
     name_dir = os.path.basename(archive).replace('.tar', '')
-    # Проверяем успешно ли прошла разархивация
-    if os.WIFEXITED(return_code.returncode) and os.WEXITSTATUS(return_code.returncode) == 0:
-        print(f"Распаковка прошла успешно.\nПолучен каталог: {name_dir}")
-    else:
-        print("При разархивации произошла ошибка")
-        sys.exit(1)
+    # Проверка успешности разархивации
+    check_success(
+        return_code.returncode,
+        f"Распаковка прошла успешно.\nПолучен каталог: {name_dir}",
+        "При разархивации произошла ошибка"
+    )
+
+    return name_dir  # TODO: пока не используется
 
 
 def del_source(name):
@@ -135,7 +151,7 @@ def del_source(name):
 
     Args:
         name (str): Имя файла/каталога для удаления.
-    
+
     Returns:
         str: Имя удалённого файла/каталога
     """
@@ -154,7 +170,7 @@ if __name__ == "__main__":
     # Сохраняем переданный путь в переменную
     file_path = sys.argv[2]
 
-    # Переходим из каталога где запущен скрипт, в каталог с файлом/папкой c файлами которые 
+    # Переходим из каталога где запущен скрипт, в каталог с файлом/папкой c файлами которые
     # нужно зашифровать
     dirname_command = 'dirname "{}"'.format(file_path)
     dirname = os.popen(dirname_command).read().strip()
