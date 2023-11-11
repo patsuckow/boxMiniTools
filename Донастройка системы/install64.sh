@@ -1,4 +1,6 @@
-# Актуальность: март 2022г.
+#!/bin/bash
+#
+# Актуальность: Ноябрь 2023г.
 # Пример для OS Linux Mint 20.3 Xfce Edition (64-bit).
 #
 # Сделать данный файл install64.sh исполняемым и запустить сразу после установки Linux Mint, 
@@ -13,8 +15,6 @@
 # удаляя ненужные и т.п., тоесть автоматически донастраивать свежеустановленную систему так,
 # как вам нужно, не делая это всё в ручную.
 #
-#!/bin/bash
-
 # 1. Удаляем предустановленные и ненужные (для меня) утилиты с их настройками из системы:
 # Поскольку нет необходимости больше пользоваться нижеследующими утилитами в будущем, то незачем оставлять
 # в системе файлы их настроек, поэтому для удаления используем sudo apt purge вместо sudo apt remove
@@ -135,12 +135,15 @@ sudo apt update & sudo apt install -y balena-etcher-electron
 # Создадим скрытую папку в домашней директории пользователя (но с доступом только суперпользователя), где будем хранить скачанные ключи для репозиториев:
 sudo mkdir ~/.crypto-keys
 
-# Скачаем и добавим в наш репозиторий ключ для VS Code
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-# Обновим списки репозиториев(пакетов в системе) и скачаем и установим VS Code
-sudo apt update && sudo apt install -y code
+# Скачаем GPG ключ для VSCodium
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
+    | gpg --dearmor \
+    | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+# Бобавим GPG ключ в наш локальный репозиторий 
+echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
+    | sudo tee /etc/apt/sources.list.d/vscodium.list
+# Обновим списки репозиториев(пакетов в системе), скачаем и установим VSCodium
+sudo apt update && sudo apt install -y codium
 
 # 7. Скачаем .deb-пакеты и установим утилиты:
 #############################################
