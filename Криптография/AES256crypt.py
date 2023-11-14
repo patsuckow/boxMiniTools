@@ -1,13 +1,13 @@
-# Скрипт (на python) шифрования/расшифровки файла или каталога с файлами (аналог AES256crypt.sh), 
+# Скрипт (на python) шифрования/расшифровки файла или каталога с файлами (аналог AES256crypt.sh),
 # но всё так же для Linux, с ипользование утилиты tar
 #
 # Автор: https://github.com/patsuckow/
 # 2023г.
 #
 # Замечание:
-# В силу неумения утилитой tar обрабатывать директории с пробелами в именах - пути к 
+# В силу неумения утилитой tar обрабатывать директории с пробелами в именах - пути к
 # файлам/директориям которые нужно зашифровать - не должны содержать пробелы!
-# Т.е. путь типа нижеследующих - будут некорректны! : 
+# Т.е. путь типа нижеследующих - будут некорректны! :
 # '/home/alex/Рабочий стол/1.txt'
 # или
 # '/home/alex/My Folder'
@@ -60,12 +60,14 @@ def file_encrypt(base_name):
 
     # Зашифруем файл, используя openssl и алгоритм AES-256-CBC с ключом 256 бит и "солью"
     new_name = f"{base_name}.enc"
-    return_code = os.system(f"openssl enc -aes-256-cbc -salt -in {base_name} -out {new_name}")
+    return_code = os.system(
+        f"openssl enc -aes-256-cbc -salt -in {base_name} -out {new_name}"
+    )
     # Проверка успешности шифрования
     check_success(
         return_code,
         f"\nШифрование прошло успешно.\nПолучен зашифрованный файл: {new_name}",
-        "При шифровании произошла ошибка"
+        "При шифровании произошла ошибка",
     )
 
     return new_name  # TODO: пока не используется
@@ -87,12 +89,14 @@ def file_decrypt(encrypted_file, new_name):
         sys.exit(1)
 
     # Расшифруем файл с помощью openssl
-    return_code = os.system(f"openssl enc -aes-256-cbc -d -in {encrypted_file} -out {new_name}")
+    return_code = os.system(
+        f"openssl enc -aes-256-cbc -d -in {encrypted_file} -out {new_name}"
+    )
     # Проверка успешности расшифровки
     check_success(
         return_code,
         f"\nРасшифровка прошла успешно.\nПолучен файл: {new_name}",
-        "При расшифровке произошла ошибка"
+        "При расшифровке произошла ошибка",
     )
 
     return new_name
@@ -115,7 +119,7 @@ def tar_rf(base_name):
     check_success(
         return_code.returncode,
         f"Архивация прошла успешно.\nПолучен файл: {archive_name}",
-        "При архивации произошла ошибка"
+        "При архивации произошла ошибка",
     )
 
     return archive_name
@@ -131,15 +135,15 @@ def tar_xf(archive):
     Returns:
         str: Имя распакованного каталога
     """
-    print('Распаковка архива...')
+    print("Распаковка архива...")
     return_code = subprocess.run(["tar", "-xf", archive])
     # Получаем имя распакованного каталога
-    name_dir = os.path.basename(archive).replace('.tar', '')
+    name_dir = os.path.basename(archive).replace(".tar", "")
     # Проверка успешности разархивации
     check_success(
         return_code.returncode,
         f"Распаковка прошла успешно.\nПолучен каталог: {name_dir}",
-        "При разархивации произошла ошибка"
+        "При разархивации произошла ошибка",
     )
 
     return name_dir  # TODO: пока не используется
@@ -155,14 +159,14 @@ def del_source(name):
     Returns:
         str: Имя удалённого файла/каталога
     """
-    os.system('rm -rf {}'.format(name))
+    os.system("rm -rf {}".format(name))
 
     return print(f"Удалён: {name}")
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print('Передано неправильное кол-во аргументов!')
+        print("Передано неправильное кол-во аргументов!")
         sys.exit(1)
 
     # Сохраняем второй переданный аргумент
@@ -177,7 +181,7 @@ if __name__ == "__main__":
     os.chdir(dirname)
 
     # Если нужно зашифровать
-    if operation == 'enc':
+    if operation == "enc":
         # Получаем имя файла или каталога из переданного пути
         base_name = os.path.basename(os.path.normpath(file_path))
 
@@ -194,18 +198,20 @@ if __name__ == "__main__":
         if os.path.exists(base_name):
             del_source(base_name)
     # Если нужно расшифровать
-    elif operation == 'dec':
+    elif operation == "dec":
         # убираем расширение .enc
-        new_name = file_path.replace('.enc', '')
+        new_name = file_path.replace(".enc", "")
         # Расшифровываем
         new_name = file_decrypt(file_path, new_name)
         # Так как расшифровка прошла успешно, то удалим зашифрованный файл/каталог
         del_source(file_path)
         # Если после расшифровки перед нами tar архив, то распакуем его
-        if new_name.endswith('.tar'):
+        if new_name.endswith(".tar"):
             tar_xf(new_name)
             # удаляем файл архива
             del_source(new_name)
     else:
-        print('Неверный параметр. Используйте "enc" для шифрования или "dec" для расшифровки.')
+        print(
+            'Неверный параметр. Используйте "enc" для шифрования или "dec" для расшифровки.'
+        )
         sys.exit(1)
