@@ -98,6 +98,7 @@ sudo apt install -y ttf-mscorefonts-installer
 # whatsapp-desktop - Unofficial whatsapp web desktop client for OSX, Linux and Windows. Build with Electron.
 # speedtest-cli - измерение скорости интернета (загрузка/выгрузка/задержка и потеря пакетов, настройка сбора статистики и использование в своих утилитах) - https://www.speedtest.net/apps/cli
 # mmex - менеджер личных финансов
+
 sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero freecad
 sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat obs-studio whatsapp-desktop
 sudo apt install -y speedtest-cli mmex
@@ -144,17 +145,21 @@ echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https:/
 # Обновим списки репозиториев(пакетов в системе), скачаем и установим VSCodium
 sudo apt update && sudo apt install -y codium
 
-# 7. Скачаем .deb-пакеты и установим утилиты:
-#############################################
+# 7. Скачаем пакеты установим утилиты:
+######################################
 # Создадим каталог uploads во временной папке системы:
 sudo mkdir /tmp/uploads
-# Скачаем .deb-пакеты:
-######################
+# Скачаем пакеты:
+#################
 # TeamViewer - Пакет программного обеспечения для удалённого контроля компьютеров совместного использования,
 #              обмена файлами между управляющей и управляемой машинами, видеосвязи и веб-конференций.
-# Skype - для видеозвонков
 sudo wget -P /tmp/uploads https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+# Skype - для видеозвонков
 # sudo wget -P /tmp/uploads https://go.skype.com/skypeforlinux-64.deb
+# yt-dlp - форк youtube-dl с активной разработкой и поддержкой. Он также предлагает широкий набор 
+#          функций и возможностей для загрузки видео с YouTube и других платформ.
+sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
+sudo chmod a+rx /usr/local/bin/yt-dlp
 # На всякий случай проверим и устраним сломавшиеся зависимости:
 sudo apt-get install -f
 # Установим все скачанные .deb-пакеты:
@@ -179,7 +184,7 @@ sudo apt add-repository ppa:slytomcat/ppa -y && sudo apt update && sudo apt inst
 yandex-disk-indicator
 
 # 8. После всех установок/обновлений/удалений:
-###########################################
+##############################################
 # Обновим списки пакетов, содержащихся в репозиториях:
 # Обновим пакеты, установленные в системе (и их зависимости), для которых в репозиториях доступны новые версии;
 # Удаляем пакеты (зависимости), которые более ненужны:
