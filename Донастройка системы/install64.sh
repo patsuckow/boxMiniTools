@@ -98,10 +98,10 @@ sudo apt install -y ttf-mscorefonts-installer
 # whatsapp-desktop - Unofficial whatsapp web desktop client for OSX, Linux and Windows. Build with Electron.
 # speedtest-cli - измерение скорости интернета (загрузка/выгрузка/задержка и потеря пакетов, настройка сбора статистики и использование в своих утилитах) - https://www.speedtest.net/apps/cli
 # mmex - менеджер личных финансов
-
+# obsidian - — это инструмент для локальной работы с набором файлов Markdown
 sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero freecad
 sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat obs-studio whatsapp-desktop
-sudo apt install -y speedtest-cli mmex
+sudo apt install -y speedtest-cli mmex obsidian
 
 # 5. Установим необходимый софт, используя ppa-репозитории:
 ###########################################################
@@ -169,7 +169,7 @@ sudo apt --fix-broken -y install
 # Удаляем каталог uploads из временной папки со всем содержимым:
 sudo rm -rf /tmp/uploads
  
-# Yandex.Disk - онлайн хранилище
+# Yandex.Disk - онлайн хранилище. Есть одно НО - он при загрузке графической оболочки может сильно тормозить систему 2-3 минуты! Так что автозагрузку - лучше отключить!
 # Вся документация: https://yandex.ru/support/disk-desktop-linux/start.html
 sudo echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex-disk.list > /dev/null
 sudo wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | sudo apt-key add - 
@@ -185,15 +185,21 @@ yandex-disk-indicator
 
 # 8. После всех установок/обновлений/удалений:
 ##############################################
-# Обновим списки пакетов, содержащихся в репозиториях:
-# Обновим пакеты, установленные в системе (и их зависимости), для которых в репозиториях доступны новые версии;
-# Удаляем пакеты (зависимости), которые более ненужны:
-# Обновим пакеты, которые требуют разрешения зависимостей (установки дополнительных/удаления конфликтующих пакетов):
-# Устраним сбои (если такие есть) в базе пакетов, вызванные нарушениями зависимостей:
+# Обновим списки пакетов, содержащихся в репозиториях
+# Обновим пакеты, установленные в системе (и их зависимости), для которых в репозиториях доступны новые версии
+sudo apt update && sudo apt full-upgrade -y
+# Удаляем пакеты (зависимости), которые более ненужны
+sudo apt-get install -f -y
+# Обновим пакеты, которые требуют разрешения зависимостей (установки дополнительных/удаления конфликтующих пакетов)
+sudo apt dist-upgrade -y 
+# Устраним сбои (если такие есть) в базе пакетов, вызванные нарушениями зависимостей
+sudo apt install -f -y 
 # Удалим оставшиеся конфиги от удалённых пакетов
+sudo aptitude -y purge ~c 
 # Удалим архивные файлы .deb пакетов из локального репозитория
+sudo apt clean -y
 # Удалим архивные файлы .deb пакетов из каталога /var/cache/apt/archives
-sudo apt update && sudo apt full-upgrade -y && sudo apt dist-upgrade -y && sudo apt-get install -f -y && sudo aptitude -y purge ~c sudo apt clean -y && sudo apt autoclean -y
+sudo apt autoclean -y
 
 # Перезагрузим систему, через 1 минуту:
 shutdown -r +1
