@@ -203,6 +203,9 @@ sudo apt clean -y
 # Удалим архивные файлы .deb пакетов из каталога /var/cache/apt/archives
 sudo apt autoclean -y
 
+# 9. Установить тему значков рабочего стола:
+gsettings set org.gnome.desktop.interface icon-theme 'Mint-Y-Dark-Blue'
+
 # Перезагрузим систему, через 1 минуту:
 shutdown -r +1
 
