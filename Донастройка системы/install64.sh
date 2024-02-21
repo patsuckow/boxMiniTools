@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Актуальность: Ноябрь 2023г.
+# Актуальность: февраль 2024г.
 # Пример для OS Linux Mint 20.3 Xfce Edition (64-bit).
 #
 # Сделать данный файл install64.sh исполняемым и запустить сразу после установки Linux Mint, 
@@ -69,7 +69,6 @@ sudo apt install -y ttf-mscorefonts-installer
 #
 # vim - редактор
 # mc - Midnight Commander - консольный файловый менеджер
-# dropbox - Dropbox-клиент
 # kcolorchooser - пипетка выбора цветов и выбора цвета на экране (нажимать на каплю)
 # kruler - экранная линейка
 # inkscape - редактор векторной графики
@@ -101,7 +100,7 @@ sudo apt install -y ttf-mscorefonts-installer
 # obsidian - — это инструмент для локальной работы с набором файлов Markdown
 # fuse3 - нужен для работы Cryptomator на Linux Mint
 # wipe - утилита для безвозвратного удаления файлов? путём перезаписи содержимого файла и каталога случайными данными или нулями.
-sudo apt install -y filezilla mc dropbox xneur gxneur kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero freecad
+sudo apt install -y filezilla mc xneur gxneur kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero freecad
 sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat obs-studio whatsapp-desktop
 sudo apt install -y speedtest-cli mmex obsidian fuse3 wipe
 
@@ -117,7 +116,7 @@ sudo add-apt-repository -y ppa:phoerious/keepassxc && sudo apt update && sudo ap
 sudo apt add-repository ppa:git-core/ppa -y && sudo apt update && sudo apt install -y git
 # Grub Customizer - утилита для настройки загрузчика системы
 # sudo add-apt-repository ppa:danielrichter2007/grub-customizer -y && sudo apt update && sudo apt install -y grub-customizer
-# Sqlitebrowser (для работы с SQLite3) - GUI версия
+# DB Browser for SQLite (sqlitebrowser) для работы с БД SQLite3  (GUI версия)
 sudo add-apt-repository -y ppa:linuxgndu/sqlitebrowser && sudo apt update && sudo apt install -y sqlitebrowser
 # Boot-Repair - утилита для восстановления доступа к вашей операционной системе
 # https://sourceforge.net/p/boot-repair/home/ru/
@@ -125,9 +124,9 @@ sudo add-apt-repository -y ppa:linuxgndu/sqlitebrowser && sudo apt update && sud
 # https://github.com/yannmrn/boot-repair
 sudo add-apt-repository -y ppa:yannubuntu/boot-repair && sudo apt update && sudo apt install -y && boot-repair
 # Typora - A minimal Markdown reading & writing app / https://typora.io
-wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
-sudo add-apt-repository -y 'deb https://typora.io/linux ./'
-sudo apt update & sudo apt install -y typora
+#wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+#sudo add-apt-repository -y 'deb https://typora.io/linux ./'
+#sudo apt update & sudo apt install -y typora
 # Etcher (balena-etcher-electron) - утилита записи загрузочных ISO-образов на флешку
 curl -1sLf 'https://dl.cloudsmith.io/public/balena/etcher/setup.deb.sh' | sudo -E bash
 sudo apt update & sudo apt install -y balena-etcher-electron
@@ -155,9 +154,11 @@ sudo mkdir /tmp/uploads
 #################
 # TeamViewer - Пакет программного обеспечения для удалённого контроля компьютеров совместного использования,
 #              обмена файлами между управляющей и управляемой машинами, видеосвязи и веб-конференций.
-sudo wget -P /tmp/uploads https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+#sudo wget -P /tmp/uploads https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+
 # Skype - для видеозвонков
 # sudo wget -P /tmp/uploads https://go.skype.com/skypeforlinux-64.deb
+
 # yt-dlp - форк youtube-dl с активной разработкой и поддержкой. Он также предлагает широкий набор 
 #          функций и возможностей для загрузки видео с YouTube и других платформ.
 sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
@@ -173,17 +174,17 @@ sudo rm -rf /tmp/uploads
  
 # Yandex.Disk - онлайн хранилище. Есть одно НО - он при загрузке графической оболочки может сильно тормозить систему 2-3 минуты! Так что автозагрузку - лучше отключить!
 # Вся документация: https://yandex.ru/support/disk-desktop-linux/start.html
-sudo echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex-disk.list > /dev/null
-sudo wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | sudo apt-key add - 
-sudo apt-get update
-sudo apt-get install -y yandex-disk
+#sudo echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex-disk.list > /dev/null
+#sudo wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | sudo apt-key add - 
+#sudo apt-get update
+#sudo apt-get install -y yandex-disk
 # echo 'Запускаем ручную настройку клиента Yandex.Disk:';
-yandex-disk setup
+#yandex-disk setup
 # Установим СТОРОННИЙ GUI индикатор yd-tools для Yandex.Disk (добавим ppa-репозиторий, обновим список пакетов и установим) - делать нужно только после установки 
 # и настройки самого клиента Yandex.Disk
-sudo apt add-repository ppa:slytomcat/ppa -y && sudo apt update && sudo apt install -y yd-tools
+#sudo apt add-repository ppa:slytomcat/ppa -y && sudo apt update && sudo apt install -y yd-tools
 # Запускаем индикатор Yandex.Disk (автозагрузка включена по умолчанию)
-yandex-disk-indicator
+#yandex-disk-indicator
 
 # 8. После всех установок/обновлений/удалений:
 ##############################################
@@ -205,6 +206,9 @@ sudo apt autoclean -y
 
 # 9. Установить тему значков рабочего стола:
 gsettings set org.gnome.desktop.interface icon-theme 'Mint-Y-Dark-Blue'
+
+# 10. Установим правильную смену раскладки клавиатуры
+setxkbmap -layout us,ru -option grp:alt_shift_toggle
 
 # Перезагрузим систему, через 1 минуту:
 shutdown -r +1
