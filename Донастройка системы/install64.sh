@@ -96,13 +96,14 @@ sudo apt install -y ttf-mscorefonts-installer
 #              трансляция на все популярные платформы: YouTube, Twitch и другие
 # whatsapp-desktop - Unofficial whatsapp web desktop client for OSX, Linux and Windows. Build with Electron.
 # speedtest-cli - измерение скорости интернета (загрузка/выгрузка/задержка и потеря пакетов, настройка сбора статистики и использование в своих утилитах) - https://www.speedtest.net/apps/cli
+# fuse3 - нужен для работы Cryptomator на Linux Mint
+sudo apt install -y filezilla mc xneur gxneur kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero freecad
+sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat obs-studio 
+sudo apt install -y speedtest-cli fuse3
 # mmex - менеджер личных финансов
 # obsidian - — это инструмент для локальной работы с набором файлов Markdown
-# fuse3 - нужен для работы Cryptomator на Linux Mint
 # wipe - утилита для безвозвратного удаления файлов? путём перезаписи содержимого файла и каталога случайными данными или нулями.
-sudo apt install -y filezilla mc xneur gxneur kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero freecad
-sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat obs-studio whatsapp-desktop
-sudo apt install -y speedtest-cli mmex obsidian fuse3 wipe
+# sudo apt install -y mmex wipe obsidian whatsapp-desktop
 
 # 5. Установим необходимый софт, используя ppa-репозитории:
 ###########################################################
