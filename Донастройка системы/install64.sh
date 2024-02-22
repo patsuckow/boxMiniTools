@@ -33,7 +33,11 @@
 # HexChat - IRC client based on XChat
 # onboard - экранная клавиатура
 # Timeshift - программа востановления системы из бэкапа (снимка)
-sudo apt purge -y redshift pix thunderbird warpinator rhythmbox webapp-manager hexchat onboard timeshift
+# firefox - этот браузер иногда сильно подвешивает систему и у некоторых спецов по безопасности есть ряд вопрос к разработчикам..
+sudo apt purge -y redshift pix thunderbird warpinator rhythmbox webapp-manager hexchat onboard timeshift firefox
+
+# удалить extensions(расширения), cache и данные Firefox
+rm -rf ~/.mozilla
 
 # 2. Обновим систему:
 # Обновим системные списки ссылок на пакеты, содержащихся в репозиториях:
