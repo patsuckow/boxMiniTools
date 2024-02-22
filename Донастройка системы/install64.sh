@@ -169,6 +169,11 @@ sudo mkdir /tmp/uploads
 #          функций и возможностей для загрузки видео с YouTube и других платформ.
 sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
 sudo chmod a+rx /usr/local/bin/yt-dlp
+
+# Vivaldi браузер
+sudo wget -P https://downloads.vivaldi.com/snapshot/install-vivaldi.sh
+sh install-vivaldi.sh
+
 # На всякий случай проверим и устраним сломавшиеся зависимости:
 sudo apt-get install -f
 # Установим все скачанные .deb-пакеты:
