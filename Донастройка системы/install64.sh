@@ -196,7 +196,7 @@ sudo apt --fix-broken -y install
 # Удаляем каталог uploads из временной папки со всем содержимым:
 sudo rm -rf /tmp/uploads
 
-# 8. Установка с сайтов, через устfновочные ssh
+# 8. Установка с сайтов, через установочные ssh
 ###############################################
 # Vivaldi браузер
 sudo wget -P https://downloads.vivaldi.com/snapshot/install-vivaldi.sh
@@ -210,10 +210,10 @@ echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 source ~/.bashrc
 # Установим несколько последних версий Python с помощью pyenv
-pyenv global -v 3.10.13
-pyenv global -v 3.11.7
-pyenv global -v 3.12.0
-# Установим версий Python 3.12.0 как глобальную в сисеме
+pyenv install -v 3.10.13
+pyenv install -v 3.11.7
+pyenv install -v 3.12.0
+# Установим версию Python 3.12.0 как глобальную в сисеме
 pyenv global 3.12.0
 
 # 9. После всех установок/обновлений/удалений:
