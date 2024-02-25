@@ -17,6 +17,7 @@
 # как вам нужно, не делая это всё в ручную.
 #
 # 1. Удаляем предустановленные и ненужные (по усмотрению) утилиты с их настройками из системы:
+##############################################################################################
 # Поскольку нет необходимости больше пользоваться нижеследующими утилитами в будущем, то незачем оставлять
 # в системе файлы их настроек, поэтому для удаления используем sudo apt purge вместо sudo apt remove
 #
@@ -40,6 +41,7 @@ sudo apt purge -y redshift pix thunderbird warpinator rhythmbox webapp-manager h
 rm -rf ~/.mozilla
 
 # 2. Обновим систему:
+#####################
 # Обновим системные списки ссылок на пакеты, содержащихся в репозиториях:
 sudo apt update
 # Обновим установленные пакеты (и их зависимости), для которых в репозиториях доступны новые версии и
@@ -54,8 +56,8 @@ sudo apt clean -y
 # Удалим архивные файлы .deb пакетов из каталога /var/cache/apt/archives
 sudo apt autoclean -y
 
-# 3. Решаем проблемы и недочёты (донастраиваем) Linux Mint 20.*:
-#
+# 3. Решаем проблемы и недочёты (донастраиваем) Linux Mint:
+###########################################################
 # "Warning: No support for locale: ru_RU.utf8":
 sudo locale-gen --purge --no-archive
 # Добавляем две локали в систему, которые ИНОГДА по умолчанию не устанавливаются:
@@ -64,7 +66,7 @@ sudo locale-gen ru_RU.CP1251 ru_RU.KOI8-R
 echo 'export MANOPT="-L ru"' >> ~/.bashrc
 
 # 4. Установим необходимый софт, используя списки репозиториев системы:
-#
+#######################################################################
 # Установим 32 битные библиотеки для разрешения неразрешённых зависимостей в 64 битной системе, это позволит,
 # при возникновении необходимости, устанавливать и запускать 32 битные и gt приложения на 64 битной системе:
 sudo apt install -y ia32-libs libc6:i386
@@ -108,7 +110,8 @@ sudo apt install -y speedtest-cli fuse3
 # mmex - менеджер личных финансов
 # obsidian - — это инструмент для локальной работы с набором файлов Markdown
 # wipe - утилита для безвозвратного удаления файлов? путём перезаписи содержимого файла и каталога случайными данными или нулями.
-# sudo apt install -y mmex wipe obsidian whatsapp-desktop
+# libssl-dev - OpenSSL lib
+# sudo apt install -y mmex wipe obsidian whatsapp-desktop ibssl-dev
 
 # 5. Установим необходимый софт, используя ppa-репозитории:
 ###########################################################
@@ -170,19 +173,6 @@ sudo mkdir /tmp/uploads
 sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
 sudo chmod a+rx /usr/local/bin/yt-dlp
 
-# Vivaldi браузер
-sudo wget -P https://downloads.vivaldi.com/snapshot/install-vivaldi.sh
-sh install-vivaldi.sh
-
-# На всякий случай проверим и устраним сломавшиеся зависимости:
-sudo apt-get install -f
-# Установим все скачанные .deb-пакеты:
-sudo dpkg -i /tmp/uploads/*.deb
-# Удовлетворяем требуемые зависимости
-sudo apt --fix-broken -y install
-# Удаляем каталог uploads из временной папки со всем содержимым:
-sudo rm -rf /tmp/uploads
- 
 # Yandex.Disk - онлайн хранилище. Есть одно НО - он при загрузке графической оболочки может сильно тормозить систему 2-3 минуты! Так что автозагрузку - лучше отключить!
 # Вся документация: https://yandex.ru/support/disk-desktop-linux/start.html
 #sudo echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex-disk.list > /dev/null
@@ -197,7 +187,36 @@ sudo rm -rf /tmp/uploads
 # Запускаем индикатор Yandex.Disk (автозагрузка включена по умолчанию)
 #yandex-disk-indicator
 
-# 8. После всех установок/обновлений/удалений:
+# На всякий случай проверим и устраним сломавшиеся зависимости:
+sudo apt-get install -f
+# Установим все скачанные .deb-пакеты:
+sudo dpkg -i /tmp/uploads/*.deb
+# Удовлетворяем требуемые зависимости
+sudo apt --fix-broken -y install
+# Удаляем каталог uploads из временной папки со всем содержимым:
+sudo rm -rf /tmp/uploads
+
+# 8. Установка с сайтов, через устfновочные ssh
+###############################################
+# Vivaldi браузер
+sudo wget -P https://downloads.vivaldi.com/snapshot/install-vivaldi.sh
+sh install-vivaldi.sh
+#
+# Установим pyenv - утилиту для управления несколькими версиями Python на одной системе.
+curl https://pyenv.run | bash
+# Теперь обновим настройки оболочки
+echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+source ~/.bashrc
+# Установим несколько последних версий Python с помощью pyenv
+pyenv global -v 3.10.13
+pyenv global -v 3.11.7
+pyenv global -v 3.12.0
+# Установим версий Python 3.12.0 как глобальную в сисеме
+pyenv global 3.12.0
+
+# 9. После всех установок/обновлений/удалений:
 ##############################################
 # Обновим списки пакетов, содержащихся в репозиториях
 # Обновим пакеты, установленные в системе (и их зависимости), для которых в репозиториях доступны новые версии
@@ -215,10 +234,10 @@ sudo apt clean -y
 # Удалим архивные файлы .deb пакетов из каталога /var/cache/apt/archives
 sudo apt autoclean -y
 
-# 9. Установить тему значков рабочего стола:
+# 10. Установить тему значков рабочего стола:
 gsettings set org.gnome.desktop.interface icon-theme 'Mint-Y-Dark-Blue'
 
-# 10. Установим правильную смену раскладки клавиатуры
+# 11. Установим правильную смену раскладки клавиатуры
 echo "setxkbmap -layout us,ru -option grp:alt_shift_toggle" >> ~/.bashrc
 
 # Перезагрузим систему, через 1 минуту:
