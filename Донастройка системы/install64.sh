@@ -193,14 +193,14 @@ sudo apt-get install -f
 sudo dpkg -i /tmp/uploads/*.deb
 # Удовлетворяем требуемые зависимости
 sudo apt --fix-broken -y install
-# Удаляем каталог uploads из временной папки со всем содержимым:
-sudo rm -rf /tmp/uploads
 
 # 8. Установка с сайтов, через установочные ssh
 ###############################################
 # Vivaldi браузер
-sudo wget -P https://downloads.vivaldi.com/snapshot/install-vivaldi.sh
-sh install-vivaldi.sh
+sudo wget -P /tmp/uploads https://downloads.vivaldi.com/snapshot/install-vivaldi.sh
+sh /tmp/uploads/install-vivaldi.sh
+# Удаляем каталог uploads из временной папки со всем содержимым
+sudo rm -rf /tmp/uploads
 #
 # Установим pyenv - утилиту для управления несколькими версиями Python на одной системе.
 curl https://pyenv.run | bash
@@ -209,12 +209,16 @@ echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 source ~/.bashrc
+# Решение проблем (с установкой pyenv)
+sudo apt install libedit-dev libncurses5-dev libssl-dev zlib1g zlib1g-dev libssl-dev libbz2-dev libsqlite3-dev lzma
 # Установим несколько последних версий Python с помощью pyenv
-pyenv install -v 3.10.13
+#pyenv install -v 3.10.13
 pyenv install -v 3.11.7
 pyenv install -v 3.12.0
 # Установим версию Python 3.12.0 как глобальную в сисеме
 pyenv global 3.12.0
+
+
 
 # PIP - пакетный менеджер для python
 ####################################
