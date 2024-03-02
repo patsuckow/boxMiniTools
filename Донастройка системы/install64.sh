@@ -155,6 +155,18 @@ echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https:/
 # Обновим списки репозиториев(пакетов в системе), скачаем и установим VSCodium
 sudo apt update && sudo apt install -y codium
 
+# Syncthin - Популярная утилита с открытым исходным кодом для синхронизации файлов между устройствами , не требующая центрального сервера. (https://apt.syncthing.net)
+# Add the release PGP keys:
+sudo mkdir -p /etc/apt/keyrings
+sudo curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+# Add the "stable" channel to your APT sources. (The stable channel is updated with stable release builds, usually every first Tuesday of the month):
+echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
+# Update and install syncthing:
+sudo apt update
+sudo apt install ca-certificates
+sudo apt install apt-transport-https
+sudo apt install syncthing
+
 # 7. Скачаем и установим deb пакеты:
 ####################################
 # Создадим каталог uploads во временной папке системы:
