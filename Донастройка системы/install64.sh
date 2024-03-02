@@ -230,16 +230,21 @@ pyenv install -v 3.12.0
 # Установим версию Python 3.12.0 как глобальную в сисеме
 pyenv global 3.12.0
 
+# 9. Flatpak и Flathub
+# Установить Flatpak и Flathub
+sudo apt install flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+# Установим Obsidian через Flatpak
+flatpak install flathub io.obsidian.Obsidian
 
-
-# PIP - пакетный менеджер для python
+#10. PIP - пакетный менеджер для python
 ####################################
 # Обновляем его
 pip install --upgrade pip
 # 
 # pip install 
 
-# 9. После всех установок/обновлений/удалений:
+# 11. После всех установок/обновлений/удалений:
 ##############################################
 # Обновим списки пакетов, содержащихся в репозиториях
 # Обновим пакеты, установленные в системе (и их зависимости), для которых в репозиториях доступны новые версии
