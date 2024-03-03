@@ -111,7 +111,7 @@ sudo apt install -y speedtest-cli fuse3
 # wipe - утилита для безвозвратного удаления файлов? путём перезаписи содержимого файла и каталога случайными данными или нулями.
 # утаснови зависимости для wipe и сам wipe
 sudo apt install -y build-essential libgmp-dev && wipe
-# Посколько по непонятной причине автор удалил репозитори wipe (https://github.com/magnumripper/wipe.git), то если wipe уже не будет устанавливать через apt, 
+# Поскольку, по непонятной причине автор удалил репозиторий (https://github.com/magnumripper/wipe.git), то если wipe уже не будет устанавливать через apt, 
 # сохранённую версию можно скачать из моего github:
 # https://github.com/patsuckow/boxMiniTools/blob/main/%D0%9A%D1%80%D0%B8%D0%BF%D1%82%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%8F/wipe_0.24-6_amd64.deb
 
@@ -164,9 +164,14 @@ sudo curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthin
 echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
 # Update and install syncthing:
 sudo apt update
-sudo apt install ca-certificates
-sudo apt install apt-transport-https
-sudo apt install syncthing
+sudo apt -y install ca-certificates && apt-transport-https
+sudo apt -y install syncthing
+# Создадим скрипт для загрузки демона syncthing, при старте системы, чтобы сихронизация сразу работала в фоне
+echo "#!/bin/bash
+su - $(whoami) -s /bin/bash -c '/usr/bin/syncthing serve --no-browser --logfile=default > / dev/null 2>&1 &'" > /usr/local/bin/syncthing.sh
+echo "$(whoami) ALL=(ALL) NOPASSWD: /usr/local/bin/syncthing.sh" | sudo tee -a /etc/sudoers
+systemctl enable syncthing.service
+systemctl start syncthing.service
 
 # 7. Скачаем и установим deb пакеты:
 ####################################
