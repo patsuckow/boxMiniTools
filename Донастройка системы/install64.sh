@@ -34,7 +34,7 @@
 # HexChat - IRC client based on XChat
 # onboard - экранная клавиатура
 # Timeshift - программа востановления системы из бэкапа (снимка)
-# firefox - этот браузер иногда сильно подвешивает систему и у некоторых спецов по безопасности есть ряд вопрос к разработчикам..
+# firefox - этот браузер иногда сильно подвешивает систему
 sudo apt purge -y redshift pix thunderbird warpinator rhythmbox webapp-manager hexchat onboard timeshift firefox
 
 # удалить extensions(расширения), cache и данные Firefox
@@ -110,8 +110,9 @@ sudo apt install -y speedtest-cli fuse3
 
 # wipe - утилита для безвозвратного удаления файлов? путём перезаписи содержимого файла и каталога случайными данными или нулями.
 # утаснови зависимости для wipe и сам wipe
-sudo apt install -y libgmp-dev && wipe
-# Посколько по непонятной причине автор удалил репозитори wipe, то если wipe уже не будет устанавливать через apt, сохранённую версию можно скачать из моего бэкапа:
+sudo apt install -y build-essential libgmp-dev && wipe
+# Посколько по непонятной причине автор удалил репозитори wipe (https://github.com/magnumripper/wipe.git), то если wipe уже не будет устанавливать через apt, 
+# сохранённую версию можно скачать из моего github:
 # https://github.com/patsuckow/boxMiniTools/blob/main/%D0%9A%D1%80%D0%B8%D0%BF%D1%82%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%8F/wipe_0.24-6_amd64.deb
 
 # 5. Установим необходимый софт, используя ppa-репозитории:
@@ -119,8 +120,7 @@ sudo apt install -y libgmp-dev && wipe
 # Cryptomator - кроссплатформенное средство резервного копирования с шифрованием для вашего облачного хранилища (Dropbox, Google Drive, OneDrive и любым 
 # другим облачным сервисом хранения данных, синхронизирующимся с локальной папкой). Сайт - https://cryptomator.org
 sudo add-apt-repository ppa:sebastian-stenzel/cryptomator -y && sudo apt update && sudo apt install cryptomator -y
-# KeePassXC - кросплатформенный менеджер паролей (https://keepassxc.org/) ("живой" форк разработки от "мёртвой и не обновляющейся" KeePassX 
-#             https://www.keepassx.org/)
+# KeePassXC - кросплатформенный менеджер паролей (https://keepassxc.org/) ("живой" форк разработки от "мёртвой и не обновляющейся" KeePassX (https://www.keepassx.org/)
 sudo add-apt-repository -y ppa:phoerious/keepassxc && sudo apt update && sudo apt install -y keepassxc
 # Консольный git:
 sudo apt add-repository ppa:git-core/ppa -y && sudo apt update && sudo apt install -y git
