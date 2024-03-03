@@ -166,12 +166,30 @@ echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://ap
 sudo apt update
 sudo apt -y install ca-certificates && apt-transport-https
 sudo apt -y install syncthing
-# Создадим скрипт для загрузки демона syncthing, при старте системы, чтобы сихронизация сразу работала в фоне
-echo "#!/bin/bash
-su - $(whoami) -s /bin/bash -c '/usr/bin/syncthing serve --no-browser --logfile=default > / dev/null 2>&1 &'" > /usr/local/bin/syncthing.sh
-echo "$(whoami) ALL=(ALL) NOPASSWD: /usr/local/bin/syncthing.sh" | sudo tee -a /etc/sudoers
-systemctl enable syncthing.service
-systemctl start syncthing.service
+# Создадим скрипт для загрузки демона syncthing, при старте системы, чтобы сихронизация сразу заработала в фоне
+# Путь к исполняемому файлу вашей утилиты (и специфические ключи для запуска)
+APP_EXECUTABLE="/usr/bin/syncthing serve --no-browser --logfile=default"
+# Название и описание вашей утилиты
+APP_NAME="Start Syncthing"
+APP_DESCRIPTION="Starts the main syncthing process in the background."
+# Создаем .desktop файл в директории автозапуска
+AUTOSTART_DIR="$HOME/.config/autostart"
+DESKTOP_FILE="$AUTOSTART_DIR/syncthing.desktop"
+mkdir -p "$AUTOSTART_DIR"
+touch "$DESKTOP_FILE"
+# Заполняем .desktop файл
+echo "[Desktop Entry]" > "$DESKTOP_FILE"
+echo "Type=Application" >> "$DESKTOP_FILE"
+echo "Exec=$APP_EXECUTABLE" >> "$DESKTOP_FILE"
+echo "Hidden=false" >> "$DESKTOP_FILE"
+echo "NoDisplay=false" >> "$DESKTOP_FILE"
+echo "X-GNOME-Autostart-enabled=true" >> "$DESKTOP_FILE"
+echo "Name=$APP_NAME" >> "$DESKTOP_FILE"
+echo "Comment=$APP_DESCRIPTION" >> "$DESKTOP_FILE"
+echo "Icon=syncthing" >> "$DESKTOP_FILE"
+echo "Terminal=false" >> "$DESKTOP_FILE"
+echo "Categories=Network;FileTransfer;P2P" >> "$DESKTOP_FILE"
+chmod +x "$DESKTOP_FILE"
 
 # 7. Скачаем и установим deb пакеты:
 ####################################
@@ -190,20 +208,6 @@ sudo mkdir /tmp/uploads
 #          функций и возможностей для загрузки видео с YouTube и других платформ.
 sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
 sudo chmod a+rx /usr/local/bin/yt-dlp
-
-# Yandex.Disk - онлайн хранилище. Есть одно НО - он при загрузке графической оболочки может сильно тормозить систему 2-3 минуты! Так что автозагрузку - лучше отключить!
-# Вся документация: https://yandex.ru/support/disk-desktop-linux/start.html
-#sudo echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex-disk.list > /dev/null
-#sudo wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | sudo apt-key add - 
-#sudo apt-get update
-#sudo apt-get install -y yandex-disk
-# echo 'Запускаем ручную настройку клиента Yandex.Disk:';
-#yandex-disk setup
-# Установим СТОРОННИЙ GUI индикатор yd-tools для Yandex.Disk (добавим ppa-репозиторий, обновим список пакетов и установим) - делать нужно только после установки 
-# и настройки самого клиента Yandex.Disk
-#sudo apt add-repository ppa:slytomcat/ppa -y && sudo apt update && sudo apt install -y yd-tools
-# Запускаем индикатор Yandex.Disk (автозагрузка включена по умолчанию)
-#yandex-disk-indicator
 
 # На всякий случай проверим и устраним сломавшиеся зависимости:
 sudo apt-get install -f
