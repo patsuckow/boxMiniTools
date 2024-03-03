@@ -103,15 +103,16 @@ sudo apt install -y ttf-mscorefonts-installer
 #              трансляция на все популярные платформы: YouTube, Twitch и другие
 # whatsapp-desktop - Unofficial whatsapp web desktop client for OSX, Linux and Windows. Build with Electron.
 # speedtest-cli - измерение скорости интернета (загрузка/выгрузка/задержка и потеря пакетов, настройка сбора статистики и использование в своих утилитах) - https://www.speedtest.net/apps/cli
-# fuse3 - нужен для работы Cryptomator на Linux Mint
+# fuse3 - FUSE library and header files - нужен для работы Cryptomator и Veracrypt на Linux Mint
 sudo apt install -y filezilla mc xneur gxneur kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero freecad
 sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat obs-studio 
 sudo apt install -y speedtest-cli fuse3
-# mmex - менеджер личных финансов
-# obsidian - — это инструмент для локальной работы с набором файлов Markdown
+
 # wipe - утилита для безвозвратного удаления файлов? путём перезаписи содержимого файла и каталога случайными данными или нулями.
-# libssl-dev - OpenSSL lib
-# sudo apt install -y mmex wipe obsidian whatsapp-desktop ibssl-dev
+# утаснови зависимости для wipe и сам wipe
+sudo apt install -y libgmp-dev && wipe
+# Посколько по непонятной причине автор удалил репозитори wipe, то если wipe уже не будет устанавливать через apt, сохранённую версию можно скачать из моего бэкапа:
+# https://github.com/patsuckow/boxMiniTools/blob/main/%D0%9A%D1%80%D0%B8%D0%BF%D1%82%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%8F/wipe_0.24-6_amd64.deb
 
 # 5. Установим необходимый софт, используя ppa-репозитории:
 ###########################################################
@@ -234,17 +235,31 @@ pyenv global 3.12.0
 # Установить Flatpak и Flathub
 sudo apt install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-# Установим Obsidian через Flatpak
+# Установим Obsidian (инструмент для локальной работы с набором файлов Markdown) через Flatpak
 flatpak install flathub io.obsidian.Obsidian
+# mmex - менеджер личных финансов
+flatpak install flathub org.moneymanagerex.MMEX
+# whatsapp-desktop
+flatpak install flathub io.github.mimbrero.WhatsAppDesktop
 
-#10. PIP - пакетный менеджер для python
+# 10. PIP - пакетный менеджер для python
 ####################################
 # Обновляем его
 pip install --upgrade pip
-# 
-# pip install 
 
-# 11. После всех установок/обновлений/удалений:
+# 11. Скачаем исходники, скомпилируем и установим софт:
+# VeraCrypt - наследник TrueCrypt (Disk encryption with strong security based on TrueCrypt)
+# https://github.com/veracrypt/VeraCrypt.git
+# https://git.code.sf.net/p/veracrypt/code
+# https://bitbucket.org/veracrypt/veracrypt.git
+sudo apt update
+sudo apt install -y build-essential yasm pkg-config libwxgtk3.0-gtk3-dev libfuse3-dev libpcsclite-dev libncurses5-dev libpam0g-dev
+cd ~/ && git clone https://bitbucket.org/veracrypt/veracrypt.git
+cd ~/veracrypt/src && make
+sudo make install
+sudo rm -rf ~/veracrypt
+
+# После всех установок/обновлений/удалений:
 ##############################################
 # Обновим списки пакетов, содержащихся в репозиториях
 # Обновим пакеты, установленные в системе (и их зависимости), для которых в репозиториях доступны новые версии
@@ -262,10 +277,7 @@ sudo apt clean -y
 # Удалим архивные файлы .deb пакетов из каталога /var/cache/apt/archives
 sudo apt autoclean -y
 
-# 10. Установить тему значков рабочего стола:
-gsettings set org.gnome.desktop.interface icon-theme 'Mint-Y-Dark-Blue'
-
-# 11. Установим правильную смену раскладки клавиатуры
+# Установим правильную смену раскладки клавиатуры
 echo "setxkbmap -layout us,ru -option grp:alt_shift_toggle" >> ~/.bashrc
 
 # Перезагрузим систему, через 1 минуту:
