@@ -39,6 +39,8 @@ sudo apt purge -y redshift pix thunderbird warpinator rhythmbox webapp-manager h
 
 # удалить extensions(расширения), cache и данные Firefox
 rm -rf ~/.mozilla
+# файлы локализации firefox
+sudo apt purge firefox-locale-en firefox-locale-ru
 
 # 2. Обновим систему:
 #####################
