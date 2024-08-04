@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Актуальность: февраль 2024г.
-# Пример для OS Linux Mint 21.3 Virginia Xfce Edition (64-bit).
-# lsb_release -a
+# Актуальность: август 2024г.
+# Пример для OS Linux Mint 22 "Wilma" Cinnamon Edition (64-bit).
+# $ lsb_release -a
 #
 # Сделать данный файл install64.sh исполняемым и запустить сразу после установки Linux Mint, 
 # для установки нужных репозиториев, пакетов и удаления ненужных.
@@ -20,27 +20,26 @@
 ##############################################################################################
 # Поскольку нет необходимости больше пользоваться нижеследующими утилитами в будущем, то незачем оставлять
 # в системе файлы их настроек, поэтому для удаления используем sudo apt purge вместо sudo apt remove
-#
-# vino - утилиту удалённого доступа к НАШЕМУ рабочему столу
-# Redshift - утилита для автоматической смены цветовой температуры монитора, в зависимости от времени суток
+# 
 # pix - доп. программа просмотра изображений (Хватит и простой Xviewer)
-# pidgin - утилиту мгновенных сообщений Pidgin
-# HexChat - встроенный чатик
-# GNote - заметки
 # Thunderbird - почтовый клиент
 # Warpinator - отправка и получение файлов по локальной сети
 # rhythmbox - аудиоплеер
 # webapp-manager - создавать десктопные приложения из страниц сайтов - хр*нь, короче!
-# HexChat - IRC client based on XChat
 # onboard - экранная клавиатура
 # Timeshift - программа востановления системы из бэкапа (снимка)
-# firefox - этот браузер иногда сильно подвешивает систему
-sudo apt purge -y redshift pix thunderbird warpinator rhythmbox webapp-manager hexchat onboard timeshift firefox
-
+sudo apt purge -y pix thunderbird warpinator rhythmbox webapp-manager onboard timeshift
+# Не актуально для удаления (выпелено в новой редакции):
+# vino - утилиту удалённого доступа к НАШЕМУ рабочему столу
+# Redshift - утилита для автоматической смены цветовой температуры монитора, в зависимости от времени суток
+# pidgin - утилиту мгновенных сообщений Pidgin
+# HexChat - встроенный чатик
+# GNote - заметки
+# HexChat - IRC client based on XChat
 # удалить extensions(расширения), cache и данные Firefox
-rm -rf ~/.mozilla
+# rm -rf ~/.mozilla
 # файлы локализации firefox
-sudo apt purge firefox-locale-en firefox-locale-ru
+# sudo apt purge firefox-locale-en firefox-locale-ru
 
 # 2. Обновим систему:
 #####################
@@ -90,10 +89,9 @@ sudo apt install -y ttf-mscorefonts-installer
 #        используют больше всего ресурсов системы, можно менять приоритеты процессов завершать их, выполнять поиск, фильтровать процессы по определенным 
 #        параметрам, сортировать, а также смотреть потоки каждого процесса.
 # brasero - запись CD/DVD-R/RW (обычных, загрузочных с iso), музыкальных дисков, клонирование дисков www.gnome.org/projects/brasero
-# freecad - бесплатная система 2D и 3D моделирования (куча роликов, документации и поддержкой python - https://www.freecad.org/?lang=ru )
+
 # pip - пакетный менеджер для python3
 # python3-venv - уилита для работы с виртуальным окружением в python3
-# clamav - антивирусный сканер и его демона + clamtk - графическая оболочка к нему.
 # ark - графическая утилита-архиватор: tar, tar.bz2, tar.lz4, tar.lz, tar.lzma, tar.xz, tar.zst, tar.Z, zip и т.д.
 # pwgen - консольный генератор паролей. Использование (рандомный, 18 символьный пароль, без символов O/0 и 1/I): pwgen -sB 18
 # ffmpeg - A complete, cross-platform solution to record, convert and stream audio and video. https://ffmpeg.org/
@@ -103,16 +101,17 @@ sudo apt install -y ttf-mscorefonts-installer
 # vnstat - Учет трафика сетевого интерфейса https://electrichp.blogspot.com/2013/05/linux-vnstat.html
 # obs-studio - захват видео скринкастов с экрана Linux, позволяет записывать видео с нескольких источников, в том числе с наложением картинки / возможна 
 #              трансляция на все популярные платформы: YouTube, Twitch и другие
-# whatsapp-desktop - Unofficial whatsapp web desktop client for OSX, Linux and Windows. Build with Electron.
-# speedtest-cli - измерение скорости интернета (загрузка/выгрузка/задержка и потеря пакетов, настройка сбора статистики и использование в своих утилитах) - https://www.speedtest.net/apps/cli
 # fuse3 - FUSE library and header files - нужен для работы Cryptomator и Veracrypt на Linux Mint
-sudo apt install -y filezilla mc xneur gxneur kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero freecad
-sudo apt install -y python3-pip python3-venv clamav clamav-daemon clamtk ark pwgen ffmpeg cheese kdenlive vnstat obs-studio 
-sudo apt install -y speedtest-cli fuse3
+sudo apt install -y filezilla mc kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero python3-pip python3-venv ark pwgen ffmpeg cheese kdenlive vnstat obs-studio fuse3
+# Прекратили поддержку на территории РФ:
+# clamav - антивирусный сканер и его демона + clamtk - графическая оболочка к нему.
+# freecad - бесплатная система 2D и 3D моделирования (куча роликов, документации и поддержкой python - https://www.freecad.org/?lang=ru ) --- ???
+# xneur gxneur  --- ???
 
 # wipe - утилита для безвозвратного удаления файлов? путём перезаписи содержимого файла и каталога случайными данными или нулями.
-# утаснови зависимости для wipe и сам wipe
-sudo apt install -y build-essential libgmp-dev && wipe
+# утасновить зависимости для wipe и сам wipe
+sudo apt install -y build-essential libgmp-dev
+sudo apt install wipe
 # Поскольку, по непонятной причине автор удалил репозиторий (https://github.com/magnumripper/wipe.git), то если wipe уже не будет устанавливать через apt, 
 # сохранённую версию можно скачать из моего github:
 # https://github.com/patsuckow/boxMiniTools/blob/main/%D0%9A%D1%80%D0%B8%D0%BF%D1%82%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%8F/wipe_0.24-6_amd64.deb
@@ -127,21 +126,21 @@ sudo add-apt-repository -y ppa:phoerious/keepassxc && sudo apt update && sudo ap
 # Консольный git:
 sudo apt add-repository ppa:git-core/ppa -y && sudo apt update && sudo apt install -y git
 # Grub Customizer - утилита для настройки загрузчика системы
-# sudo add-apt-repository ppa:danielrichter2007/grub-customizer -y && sudo apt update && sudo apt install -y grub-customizer
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer -y && sudo apt update && sudo apt install -y grub-customizer
 # DB Browser for SQLite (sqlitebrowser) для работы с БД SQLite3  (GUI версия)
 sudo add-apt-repository -y ppa:linuxgndu/sqlitebrowser && sudo apt update && sudo apt install -y sqlitebrowser
-# Boot-Repair - утилита для восстановления доступа к вашей операционной системе
+# Boot-Repair - утилита для восстановления доступа к вашей операционной системе в случае сбоя загрузчика
 # https://sourceforge.net/p/boot-repair/home/ru/
 # https://help.ubuntu.com/community/Boot-Repair
 # https://github.com/yannmrn/boot-repair
 sudo add-apt-repository -y ppa:yannubuntu/boot-repair && sudo apt update && sudo apt install -y && boot-repair
+# Etcher (balena-etcher-electron) - утилита записи загрузочных ISO-образов на флешку
+curl -1sLf 'https://dl.cloudsmith.io/public/balena/etcher/setup.deb.sh' | sudo -E bash
+sudo apt update & sudo apt install -y balena-etcher-electron
 # Typora - A minimal Markdown reading & writing app / https://typora.io
 #wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
 #sudo add-apt-repository -y 'deb https://typora.io/linux ./'
 #sudo apt update & sudo apt install -y typora
-# Etcher (balena-etcher-electron) - утилита записи загрузочных ISO-образов на флешку
-curl -1sLf 'https://dl.cloudsmith.io/public/balena/etcher/setup.deb.sh' | sudo -E bash
-sudo apt update & sudo apt install -y balena-etcher-electron
 
 # 6. Установка утилит, для обновления которых требуется наличие в системе крипто-ключей для их репозиториев:
 #############################################################################################################
@@ -152,13 +151,13 @@ sudo mkdir ~/.crypto-keys
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
     | gpg --dearmor \
     | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
-# Бобавим GPG ключ в наш локальный репозиторий 
+# Добавим GPG ключ в наш локальный репозиторий 
 echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
     | sudo tee /etc/apt/sources.list.d/vscodium.list
 # Обновим списки репозиториев(пакетов в системе), скачаем и установим VSCodium
 sudo apt update && sudo apt install -y codium
 
-# Syncthin - Популярная утилита с открытым исходным кодом для синхронизации файлов между устройствами , не требующая центрального сервера. (https://apt.syncthing.net)
+# Syncthin - Утилита с открытым исходным кодом для синхронизации файлов между устройствами, не требующая центрального сервера. (https://apt.syncthing.net)
 # Add the release PGP keys:
 sudo mkdir -p /etc/apt/keyrings
 sudo curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
@@ -166,7 +165,7 @@ sudo curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthin
 echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
 # Update and install syncthing:
 sudo apt update
-sudo apt -y install ca-certificates && apt-transport-https
+# sudo apt -y install ca-certificates && apt-transport-https
 sudo apt -y install syncthing
 # Создадим скрипт для загрузки демона syncthing, при старте системы, чтобы сихронизация сразу заработала в фоне
 # Путь к исполняемому файлу вашей утилиты (и специфические ключи для запуска)
@@ -201,7 +200,7 @@ sudo mkdir /tmp/uploads
 #################
 # TeamViewer - Пакет программного обеспечения для удалённого контроля компьютеров совместного использования,
 #              обмена файлами между управляющей и управляемой машинами, видеосвязи и веб-конференций.
-#sudo wget -P /tmp/uploads https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+# sudo wget -P /tmp/uploads https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
 
 # Skype - для видеозвонков
 # sudo wget -P /tmp/uploads https://go.skype.com/skypeforlinux-64.deb
@@ -214,7 +213,7 @@ sudo chmod a+rx /usr/local/bin/yt-dlp
 # На всякий случай проверим и устраним сломавшиеся зависимости:
 sudo apt-get install -f
 # Установим все скачанные .deb-пакеты:
-sudo dpkg -i /tmp/uploads/*.deb
+# sudo dpkg -i /tmp/uploads/*.deb
 # Удовлетворяем требуемые зависимости
 sudo apt --fix-broken -y install
 
@@ -244,14 +243,14 @@ pyenv global 3.12.0
 
 # 9. Flatpak и Flathub
 # Установить Flatpak и Flathub
-sudo apt install flatpak
+# sudo apt install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 # Установим Obsidian (инструмент для локальной работы с набором файлов Markdown) через Flatpak
-flatpak install flathub io.obsidian.Obsidian
+## flatpak install flathub io.obsidian.Obsidian  ---???
 # mmex - менеджер личных финансов
-flatpak install flathub org.moneymanagerex.MMEX
-# whatsapp-desktop
-flatpak install flathub io.github.mimbrero.WhatsAppDesktop
+flatpak install flathub org.moneymanagerex.MMEX -y
+# whatsapp-desktop - неофициальный десктопный клиентдля whatsapp
+flatpak install flathub io.github.mimbrero.WhatsAppDesktop -y
 
 # 10. PIP - пакетный менеджер для python
 ####################################
@@ -263,12 +262,13 @@ pip install --upgrade pip
 # https://github.com/veracrypt/VeraCrypt.git
 # https://git.code.sf.net/p/veracrypt/code
 # https://bitbucket.org/veracrypt/veracrypt.git
-sudo apt update
-sudo apt install -y build-essential yasm pkg-config libwxgtk3.0-gtk3-dev libfuse3-dev libpcsclite-dev libncurses5-dev libpam0g-dev
-cd ~/ && git clone https://bitbucket.org/veracrypt/veracrypt.git
-cd ~/veracrypt/src && make
-sudo make install
-sudo rm -rf ~/veracrypt
+# sudo apt update
+# sudo apt install -y build-essential yasm fuse pkg-config libpcsclite-dev libncurses-dev libpam0g-dev
+# libwxgtk3.0-gtk3-dev
+# cd ~/ && git clone https://bitbucket.org/veracrypt/veracrypt.git
+# cd ~/veracrypt/src && make
+# sudo make install
+# sudo rm -rf ~/veracrypt
 
 # После всех установок/обновлений/удалений:
 ##############################################
