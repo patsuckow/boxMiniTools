@@ -289,7 +289,7 @@ sudo apt clean -y
 sudo apt autoclean -y
 
 # Установим правильную смену раскладки клавиатуры
-echo "setxkbmap -layout us,ru -option grp:alt_shift_toggle" >> ~/.bashrc
+# echo "setxkbmap -layout us,ru -option grp:alt_shift_toggle" >> ~/.bashrc
 
 # Перезагрузим систему, через 1 минуту:
 shutdown -r +1
