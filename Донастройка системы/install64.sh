@@ -233,7 +233,7 @@ echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 source ~/.bashrc
 # Решение проблем (с установкой pyenv)
-sudo apt install libedit-dev libncurses5-dev libssl-dev zlib1g zlib1g-dev libssl-dev libbz2-dev libsqlite3-dev lzma
+sudo apt install libedit-dev libncurses5-dev libssl-dev zlib1g zlib1g-dev libssl-dev libbz2-dev libsqlite3-dev lzma -y
 # Установим несколько последних версий Python с помощью pyenv
 #pyenv install -v 3.10.13
 pyenv install -v 3.11.7
