@@ -33,7 +33,6 @@ sudo apt purge -y pix thunderbird warpinator rhythmbox webapp-manager onboard ti
 # vino - утилиту удалённого доступа к НАШЕМУ рабочему столу
 # Redshift - утилита для автоматической смены цветовой температуры монитора, в зависимости от времени суток
 # pidgin - утилиту мгновенных сообщений Pidgin
-# HexChat - встроенный чатик
 # GNote - заметки
 # HexChat - IRC client based on XChat
 # удалить extensions(расширения), cache и данные Firefox
@@ -89,8 +88,6 @@ sudo apt install -y ttf-mscorefonts-installer
 #        используют больше всего ресурсов системы, можно менять приоритеты процессов завершать их, выполнять поиск, фильтровать процессы по определенным 
 #        параметрам, сортировать, а также смотреть потоки каждого процесса.
 # brasero - запись CD/DVD-R/RW (обычных, загрузочных с iso), музыкальных дисков, клонирование дисков www.gnome.org/projects/brasero
-
-# pip - пакетный менеджер для python3
 # python3-venv - уилита для работы с виртуальным окружением в python3
 # ark - графическая утилита-архиватор: tar, tar.bz2, tar.lz4, tar.lz, tar.lzma, tar.xz, tar.zst, tar.Z, zip и т.д.
 # pwgen - консольный генератор паролей. Использование (рандомный, 18 символьный пароль, без символов O/0 и 1/I): pwgen -sB 18
@@ -102,7 +99,10 @@ sudo apt install -y ttf-mscorefonts-installer
 # obs-studio - захват видео скринкастов с экрана Linux, позволяет записывать видео с нескольких источников, в том числе с наложением картинки / возможна 
 #              трансляция на все популярные платформы: YouTube, Twitch и другие
 # fuse3 - FUSE library and header files - нужен для работы Cryptomator и Veracrypt на Linux Mint
-sudo apt install -y filezilla mc kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero python3-pip python3-venv ark pwgen ffmpeg cheese kdenlive vnstat obs-studio fuse3
+# Audacity - запись и редактирование аудиофайлов (https://github.com/audacity/audacity) (https://www.audacityteam.org/download/linux/)
+# Audacious - лёгкий аудиоплеер
+sudo apt install -y filezilla mc kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero python3-pip python3-venv ark pwgen ffmpeg cheese kdenlive vnstat obs-studio fuse3 audacity audacious
+
 # Прекратили поддержку на территории РФ:
 # clamav - антивирусный сканер и его демона + clamtk - графическая оболочка к нему.
 # freecad - бесплатная система 2D и 3D моделирования (куча роликов, документации и поддержкой python - https://www.freecad.org/?lang=ru ) --- ???
@@ -253,7 +253,7 @@ flatpak install flathub org.moneymanagerex.MMEX -y
 flatpak install flathub io.github.mimbrero.WhatsAppDesktop -y
 
 # 10. PIP - пакетный менеджер для python
-####################################
+########################################
 # Обновляем его
 pip install --upgrade pip
 
