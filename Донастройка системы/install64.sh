@@ -101,7 +101,9 @@ sudo apt install -y ttf-mscorefonts-installer
 # fuse3 - FUSE library and header files - нужен для работы Cryptomator и Veracrypt на Linux Mint
 # Audacity - запись и редактирование аудиофайлов (https://github.com/audacity/audacity) (https://www.audacityteam.org/download/linux/)
 # Audacious - лёгкий аудиоплеер
-sudo apt install -y filezilla mc kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero python3-pip python3-venv ark pwgen ffmpeg cheese kdenlive vnstat obs-studio fuse3 audacity audacious
+# cpu-x - аналог виндовс cpu-z утилиты для получения информации о процессоре, материнке и т.п.
+# kdiskmark - утилита тестирования скорости чтения/записи HDD, SSD, flash
+sudo apt install -y filezilla mc kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero python3-pip python3-venv ark pwgen ffmpeg cheese kdenlive vnstat obs-studio fuse3 audacity audacious cpu-x kdiskmark
 
 # Прекратили поддержку на территории РФ:
 # clamav - антивирусный сканер и его демона + clamtk - графическая оболочка к нему.
