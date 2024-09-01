@@ -127,8 +127,6 @@ sudo add-apt-repository ppa:sebastian-stenzel/cryptomator -y && sudo apt update 
 sudo add-apt-repository -y ppa:phoerious/keepassxc && sudo apt update && sudo apt install -y keepassxc
 # Консольный git:
 sudo apt add-repository ppa:git-core/ppa -y && sudo apt update && sudo apt install -y git
-# Grub Customizer - утилита для настройки загрузчика системы
-sudo add-apt-repository ppa:danielrichter2007/grub-customizer -y && sudo apt update && sudo apt install -y grub-customizer
 # DB Browser for SQLite (sqlitebrowser) для работы с БД SQLite3  (GUI версия)
 sudo add-apt-repository -y ppa:linuxgndu/sqlitebrowser && sudo apt update && sudo apt install -y sqlitebrowser
 # Boot-Repair - утилита для восстановления доступа к вашей операционной системе в случае сбоя загрузчика
@@ -143,6 +141,8 @@ sudo apt update & sudo apt install -y balena-etcher-electron
 #wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
 #sudo add-apt-repository -y 'deb https://typora.io/linux ./'
 #sudo apt update & sudo apt install -y typora
+# Grub Customizer - утилита для настройки загрузчика системы - Windows может снести загрузчик своими обновлениями и потом восстановить - эти настройки будет невозможно! Поэтому - нафиг их.
+# sudo add-apt-repository ppa:danielrichter2007/grub-customizer -y && sudo apt update && sudo apt install -y grub-customizer
 
 # 6. Установка утилит, для обновления которых требуется наличие в системе крипто-ключей для их репозиториев:
 #############################################################################################################
