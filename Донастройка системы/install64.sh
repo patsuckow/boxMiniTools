@@ -133,7 +133,7 @@ sudo add-apt-repository -y ppa:linuxgndu/sqlitebrowser && sudo apt update && sud
 # https://sourceforge.net/p/boot-repair/home/ru/
 # https://help.ubuntu.com/community/Boot-Repair
 # https://github.com/yannmrn/boot-repair
-sudo add-apt-repository -y ppa:yannubuntu/boot-repair && sudo apt update && sudo apt install -y && boot-repair
+sudo add-apt-repository -y ppa:yannubuntu/boot-repair && sudo apt update && sudo apt install -y boot-repair
 # Etcher (balena-etcher-electron) - утилита записи загрузочных ISO-образов на флешку
 curl -1sLf 'https://dl.cloudsmith.io/public/balena/etcher/setup.deb.sh' | sudo -E bash
 sudo apt update & sudo apt install -y balena-etcher-electron
