@@ -65,8 +65,8 @@ sudo locale-gen ru_RU.CP1251 ru_RU.KOI8-R
 # Установим показ русскоязычной документации (манов) по команде man <пакет> (если они есть на русском) 
 echo 'export MANOPT="-L ru"' >> ~/.bashrc
 
-# 4. Установим необходимый софт, используя списки репозиториев системы:
-#######################################################################
+# 4. Установим необходимый софт/библиотеки, используя списки репозиториев системы:
+##################################################################################
 # Установим 32 битные библиотеки для разрешения неразрешённых зависимостей в 64 битной системе, это позволит,
 # при возникновении необходимости, устанавливать и запускать 32 битные и gt приложения на 64 битной системе:
 sudo apt install -y ia32-libs libc6:i386
@@ -103,7 +103,8 @@ sudo apt install -y ttf-mscorefonts-installer
 # Audacious - лёгкий аудиоплеер
 # cpu-x - аналог виндовс cpu-z утилиты для получения информации о процессоре, материнке и т.п.
 # kdiskmark - утилита тестирования скорости чтения/записи HDD, SSD, flash
-sudo apt install -y filezilla mc kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero python3-pip python3-venv ark pwgen ffmpeg cheese kdenlive vnstat obs-studio fuse3 audacity audacious cpu-x kdiskmark
+# libgtk2.0-dev - библиотека gtk+2.0
+sudo apt install -y filezilla mc kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero python3-pip python3-venv ark pwgen ffmpeg cheese kdenlive vnstat obs-studio fuse3 audacity audacious cpu-x kdiskmark libgtk2.0-dev
 
 # Прекратили поддержку на территории РФ:
 # clamav - антивирусный сканер и его демона + clamtk - графическая оболочка к нему.
