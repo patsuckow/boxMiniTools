@@ -1,8 +1,10 @@
 ### Мой склад: Советов, мини утилит на Bash, Python и прочее:
 
 ### Автокликеры для тапалок
-TapHamster.js - автокликер для Hamster Combat
-TapDogiators.js - автокликер для Dogiators
+
+`TapHamster.js` - автокликер для Hamster Combat
+
+`TapDogiators.js` - автокликер для Dogiators
 
 ### Криптография:
 
