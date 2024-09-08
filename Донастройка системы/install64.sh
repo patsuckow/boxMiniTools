@@ -135,9 +135,9 @@ sudo add-apt-repository -y ppa:linuxgndu/sqlitebrowser && sudo apt update && sud
 # https://help.ubuntu.com/community/Boot-Repair
 # https://github.com/yannmrn/boot-repair
 sudo add-apt-repository -y ppa:yannubuntu/boot-repair && sudo apt update && sudo apt install -y boot-repair
-# Etcher (balena-etcher-electron) - утилита записи загрузочных ISO-образов на флешку
-curl -1sLf 'https://dl.cloudsmith.io/public/balena/etcher/setup.deb.sh' | sudo -E bash
-sudo apt update & sudo apt install -y balena-etcher-electron
+# Etcher (balena-etcher-electron) - утилита записи загрузочных ISO-образов на флешку - что-то сломались зависимости в новом Mint :(
+# curl -1sLf 'https://dl.cloudsmith.io/public/balena/etcher/setup.deb.sh' | sudo -E bash
+# sudo apt update & sudo apt install -y balena-etcher-electron
 # Typora - A minimal Markdown reading & writing app / https://typora.io
 #wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
 #sudo add-apt-repository -y 'deb https://typora.io/linux ./'
