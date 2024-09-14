@@ -61,9 +61,9 @@ function getValuesEnergy() {
         const energyText = energyElement.getAttribute('data-text');
         if (energyText) {
             const [currEnergy, maxEnergy] = energyText.split("/").map(Number);
-            console.log('Energy Element:', energyElement);
-            console.log('Current Energy:', currEnergy);
-            console.log('Max Energy:', maxEnergy);
+            // console.log('Energy Element:', energyElement);
+            // console.log('Current Energy:', currEnergy);
+            // console.log('Max Energy:', maxEnergy);
             return { currEnergy, maxEnergy };
         }
     }
@@ -77,7 +77,7 @@ function getEnergyOneTap(callback) {
         if (newValuesEnergy) {
             const { currEnergy, maxEnergy } = newValuesEnergy;
             const energyOneTap = maxEnergy - currEnergy;
-            console.log('Energy One Tap:', energyOneTap);
+            // console.log('Energy One Tap:', energyOneTap);
             callback(energyOneTap);
         } else {
             callback(null);
@@ -101,7 +101,7 @@ function handleFullEnergy(maxEnergy, callback) {
     getEnergyOneTap((energyOneTap) => {
         if (energyOneTap !== null) {
             const numClicks = Math.ceil(maxEnergy / energyOneTap);
-            console.log('Number of Clicks Required:', numClicks);
+            // console.log('Number of Clicks Required:', numClicks);
             clickMultipleTimes(button, numClicks);
             callback();
         } else {
@@ -116,8 +116,8 @@ function clickDogiators() {
         const valuesEnergy = getValuesEnergy();
         if (valuesEnergy && button) {
             const { currEnergy, maxEnergy } = valuesEnergy;
-            console.log('Current Energy:', currEnergy);
-            console.log('Max Energy:', maxEnergy);
+            // console.log('Current Energy:', currEnergy);
+            // console.log('Max Energy:', maxEnergy);
 
             if (currEnergy === maxEnergy) {
                 handleFullEnergy(maxEnergy, () => {
