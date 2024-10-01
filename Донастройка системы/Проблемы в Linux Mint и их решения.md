@@ -59,6 +59,6 @@ $ pulseaudio -k
 Решение: перейти в командную строку ctrl + alt + F2, залогиниться и выполнить переустановку cinnamon:
 
 ```
-$ sudo apt install --reinstall cinnamon
+$ sudo apt install --reinstall cinnamon -y && reboot
 ```
 
