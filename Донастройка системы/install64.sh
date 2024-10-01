@@ -69,7 +69,7 @@ echo 'export MANOPT="-L ru"' >> ~/.bashrc
 ##################################################################################
 # Установим 32 битные библиотеки для разрешения неразрешённых зависимостей в 64 битной системе, это позволит,
 # при возникновении необходимости, устанавливать и запускать 32 битные и gt приложения на 64 битной системе:
-sudo apt install -y ia32-libs libc6:i386
+# sudo apt install -y ia32-libs libc6:i386
 # Установим Microsoft True Type(ttf) шрифты: Andale Mono, Arial, Arial Black, Comic Sans MS, Courier New, Georgia, Impact, Times New Roman, Trebuchet, 
 # Verdana, Webdings
 sudo apt install -y ttf-mscorefonts-installer
@@ -106,8 +106,14 @@ sudo apt install -y ttf-mscorefonts-installer
 # libgtk2.0-dev - библиотека gtk+2.0
 # metadata-cleaner - позволяет просматривать метаданные в файлах и по возможности избавляться от них (https://metadatacleaner.romainvigier.fr/ )
 # GIMP - фоторедактор (бесплатный аналог фотошоп)
+# Putty - ssh-клиент
 sudo apt install -y filezilla mc kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero python3-pip python3-venv ark pwgen ffmpeg cheese kdenlive 
 sudo apt install -y vnstat obs-studio fuse3 audacity audacious cpu-x kdiskmarklibgtk2.0-dev gimp
+
+# Установим Putty - ssh-клиент:
+sudo add-apt-repository universe
+sudo apt update
+sudo apt install putty -y
 
 # Прекратили поддержку на территории РФ:
 # clamav - антивирусный сканер и его демона + clamtk - графическая оболочка к нему.
