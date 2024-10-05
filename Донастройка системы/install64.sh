@@ -231,11 +231,11 @@ sudo apt --fix-broken -y install
 
 # 8. Установка с сайтов, через установочные ssh
 ###############################################
-# Vivaldi браузер
-sudo wget -P /tmp/uploads https://downloads.vivaldi.com/snapshot/install-vivaldi.sh
-sh /tmp/uploads/install-vivaldi.sh
+# Vivaldi браузер - увы, не поддерживает LESS и значит нельзя смотреть ютуб через прокси :(
+# sudo wget -P /tmp/uploads https://downloads.vivaldi.com/snapshot/install-vivaldi.sh
+# sh /tmp/uploads/install-vivaldi.sh
 # Удаляем каталог uploads из временной папки со всем содержимым
-sudo rm -rf /tmp/uploads
+# sudo rm -rf /tmp/uploads
 #
 # Установим pyenv - утилиту для управления несколькими версиями Python на одной системе.
 curl https://pyenv.run | bash
