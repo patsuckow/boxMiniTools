@@ -108,7 +108,7 @@ sudo apt install -y ttf-mscorefonts-installer
 # GIMP - фоторедактор (бесплатный аналог фотошоп)
 # Putty - ssh-клиент
 sudo apt install -y filezilla mc kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero python3-pip python3-venv ark pwgen ffmpeg cheese kdenlive 
-sudo apt install -y vnstat obs-studio fuse3 audacity audacious cpu-x kdiskmarklibgtk2.0-dev gimp
+sudo apt install -y vnstat obs-studio fuse3 audacity audacious cpu-x kdiskmark gimp
 
 # Установим Putty - ssh-клиент:
 sudo add-apt-repository universe
