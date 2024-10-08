@@ -163,11 +163,14 @@ sudo mkdir ~/.crypto-keys
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
     | gpg --dearmor \
     | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
-# Добавим GPG ключ в наш локальный репозиторий 
-echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
+
+# Добавим репозиторий VSCodium с указанием GPG ключа и архитектуры amd64
+echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main' \
     | sudo tee /etc/apt/sources.list.d/vscodium.list
-# Обновим списки репозиториев(пакетов в системе), скачаем и установим VSCodium
+
+# Обновим списки репозиториев, скачаем и установим VSCodium
 sudo apt update && sudo apt install -y codium
+
 
 # Syncthin - Утилита с открытым исходным кодом для синхронизации файлов между устройствами, не требующая центрального сервера. (https://apt.syncthing.net)
 # Add the release PGP keys:
