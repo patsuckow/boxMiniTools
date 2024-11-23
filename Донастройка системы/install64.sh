@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Актуальность: октябрь 2024г.
+# Актуальность: ноябрь 2024г.
 # Пример для OS Linux Mint 22 "Wilma" Cinnamon Edition (64-bit).
 # $ lsb_release -a
 #
@@ -107,8 +107,9 @@ sudo apt install -y ttf-mscorefonts-installer
 # metadata-cleaner - позволяет просматривать метаданные в файлах и по возможности избавляться от них (https://metadatacleaner.romainvigier.fr/ )
 # GIMP - фоторедактор (бесплатный аналог фотошоп)
 # Putty - ssh-клиент
+# GSmart Control - Проверка инфы из S.M.A.R.T. ATA и SATA HDD дисков, доки - https://gsmartcontrol.shaduri.dev/
 sudo apt install -y filezilla mc kcolorchooser kruler inkscape gparted libimage-exiftool-perl whois tree htop brasero python3-pip python3-venv ark pwgen ffmpeg cheese kdenlive 
-sudo apt install -y vnstat obs-studio fuse3 audacity audacious cpu-x kdiskmark gimp
+sudo apt install -y vnstat obs-studio fuse3 audacity audacious cpu-x kdiskmark gimp gsmartcontrol
 
 # Установим Putty - ssh-клиент:
 sudo add-apt-repository universe
