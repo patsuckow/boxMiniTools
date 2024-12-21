@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Актуальность: ноябрь 2024г.
+# Актуальность: декабрь 2024г.
 # Пример для OS Linux Mint 22 "Wilma" Cinnamon Edition (64-bit).
 # $ lsb_release -a
 #
@@ -285,6 +285,18 @@ pip install --upgrade pip
 # cd ~/veracrypt/src && make
 # sudo make install
 # sudo rm -rf ~/veracrypt
+
+# 12. Установим TLS сертификаты МИНЦИФРЫ для безопасного входа на гос.сайты (типа ГосУслуг) и сайты Российских банков, типа Сбера
+cd /usr/local/share/ca-certificates/
+sudo -s
+# скачать корневой сертификат:
+wget https://gu-st.ru/content/lending/russian_trusted_root_ca_pem.crt
+# скачать выпускающий сертификат:
+wget https://gu-st.ru/content/lending/russian_trusted_sub_ca_pem.crt
+# обновить системное хранилище сертификатов:
+update-ca-certificates
+# Проверить установку сертификатов (должны появится строки: label: Russian Trusted Root CA и label: Russian Trusted Sub CA):
+trust list | grep Russian
 
 # После всех установок/обновлений/удалений:
 ##############################################
