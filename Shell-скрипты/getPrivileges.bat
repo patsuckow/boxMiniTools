@@ -61,6 +61,9 @@ if "%1"=="ELEV" shift /1
 :: Важно!: Запускать команды (без открытия нового окна терминала) нужно будет через префикс-команду: start /b cmd /c "ваша команда"
 :: Например:
 
+:: Остановка службы, если она запущена (без открытия нового окна терминала, но оборачивать в префикс-команду НЕ нужно!)
+sc query libusb0 | find "RUNNING" >nul && sc stop libusb0 >nul 2>&1
+
 :: Удаление dll библиотек драйверов
 start /b cmd /c "del /F /Q C:\Windows\SysWOW64\libusbK.dll"
 start /b cmd /c "del /F /Q C:\Windows\SysWOW64\libusb0.dll"
@@ -74,7 +77,7 @@ start /b cmd /c "takeown /f C:\Windows\System32\drivers\libusb0.sys"
 start /b cmd /c "icacls C:\Windows\System32\drivers\libusb0.sys /grant %username%:F"
 start /b cmd /c "del /F /Q C:\Windows\System32\drivers\libusb0.sys"
 
-:: Запуск certmgr.msc и regedit
+:: Запуск certmgr.msc и regedit (здесь достаточно префикс команды: start /b )
 start /b certmgr.msc
 start /b regedit
 
