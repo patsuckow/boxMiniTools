@@ -58,4 +58,25 @@ if exist "%adminTestFile%" (
 if "%1"=="ELEV" shift /1
 
 :: Далее идёт основная логика вашего скрипта, которому нужны были права администратора в системе Windows
-pause
+:: Важно!: Запускать команды (без открытия нового окна терминала) нужно будет через префикс-команду: start /b cmd /c "ваша команда"
+:: Например:
+
+:: Удаление dll библиотек драйверов
+start /b cmd /c "del /F /Q C:\Windows\SysWOW64\libusbK.dll"
+start /b cmd /c "del /F /Q C:\Windows\SysWOW64\libusb0.dll"
+start /b cmd /c "del /F /Q C:\Windows\System32\libusbK.dll"
+start /b cmd /c "del /F /Q C:\Windows\System32\libusb0.dll"
+start /b cmd /c "del /F /Q C:\Windows\System32\libusbK_x86.dll"
+start /b cmd /c "del /F /Q C:\Windows\System32\libusb0_x86.dll"
+
+:: Изменение прав доступа и удаление sys-файла драйвера
+start /b cmd /c "takeown /f C:\Windows\System32\drivers\libusb0.sys"
+start /b cmd /c "icacls C:\Windows\System32\drivers\libusb0.sys /grant %username%:F"
+start /b cmd /c "del /F /Q C:\Windows\System32\drivers\libusb0.sys"
+
+:: Запуск certmgr.msc и regedit
+start /b certmgr.msc
+start /b regedit
+
+::pause
+exit
