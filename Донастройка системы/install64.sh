@@ -27,8 +27,8 @@
 # rhythmbox - аудиоплеер
 # webapp-manager - создавать десктопные приложения из страниц сайтов - хр*нь, короче!
 # onboard - экранная клавиатура
-# Timeshift - программа востановления системы из бэкапа (снимка)
-sudo apt purge -y pix thunderbird warpinator rhythmbox webapp-manager onboard timeshift
+# Timeshift - программа востановления системы из бэкапа (снимка) - Заметка:пока оставлю, надо попробовать её !
+# sudo apt purge -y pix thunderbird warpinator rhythmbox webapp-manager onboard timeshift
 # Не актуально для удаления (выпелено в новой редакции):
 # vino - утилиту удалённого доступа к НАШЕМУ рабочему столу
 # Redshift - утилита для автоматической смены цветовой температуры монитора, в зависимости от времени суток
